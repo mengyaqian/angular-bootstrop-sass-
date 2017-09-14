@@ -1,0 +1,31 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="work-top">
+			我提交的工作报告
+		</div>
+		<div class="work-select select_odd"> 
+			<select [ngModel]="student" (ngModelChange)="student=$event;setInfo()">
+				<option *ngFor="let item of students" [value]='item.id'>{{item.name}}</option> 
+			</select>
+		</div>
+		<ul class="work-ul">
+			 <li *ngFor="let item of listData">
+				<div>
+					<div>
+						<img src="{{item.type | workImg}}" />
+					</div>
+					<div>
+					<p>{{worktext(item.type)}}</p>
+					<p>{{item.createDate}}</p>
+					</div>
+				</div>
+				<div>
+					{{item.todaySummary}}
+				</div>
+				<div>
+					{{item.updateDate}}
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,74 @@
+
+	<div class="saas-top">
+		<div class="saas-logo">
+			<p>
+				<img src="../../assets/images/u191.png" />
+			</p>
+			<p>{{userInfo.users[0].orgName}}</p>
+		</div>
+		<ul class="saas-nav" id="nav-menu">
+			<a href="">
+				<li id="nav-1"><img src="../../assets/images/home.png" /></li>
+			</a>
+            <a *ngFor='let tittle of tittleArr' (click)='tittlePevent()'>
+                <li (click)='tittleClick(tittle)'><span>{{tittle.desc}}</span><b id="infotip" style="display: none;"></b></li>
+            </a>
+		</ul>
+		<ul class="saas-nav-right" >
+			<li id="saas-add" (mouseover)='menuState=1' (mouseout)='menuState=2'>
+				<span><img
+					src="../../assets/images/qadd.png"></span>
+				<ul *ngIf='menuState==1'>
+					<p></p>
+					<li><a href="/bill-list">记开支流水</a></li>
+					<li><b></b></li>
+
+                    <li><a href="/billBusiness">提交单据</a></li>
+                    <li><a href="/trave/myorder">差旅预订</a></li>
+					<li><b></b></li>
+                    <li><a href="/approve/businessApprove">审批</a></li>
+                    <li><a href="/office/index-work">写工作报告</a></li>
+					<li><b></b></li>
+						<li><a href="/office/index-notice">公告</a></li>
+					<li><b></b></li>
+						<li><a id="invitation" onclick="__showInvite()">邀请同事</a></li>
+					<li><a href="#" id="createGroupMenu">创建群组</a></li>
+					<div></div>
+				</ul></li>
+			<li id="saas-search" (mouseover)='seoState=1' (mouseout)='seoState=2'>
+				<span><img class="saas-search-begin" src="../../assets/images/search_nav.png" /></span>
+				<form *ngIf='seoState==1' action="" method="post" onkeydown="if(event.keyCode==13){return false;}">
+					<p></p>
+					<div>
+						<div>
+							<img class="saas-search-begin" src="../../assets/images/search.png" /> <input
+								id="saas-search-value-key" type="text" name="" value="" placeholder="搜索" />
+						</div>
+					</div>
+					<span></span>
+				</form>
+			</li>
+			<li id="saas-user" (mouseover)='userState=1' (mouseout)='userState=2'>
+				<span id="saas-img"  >
+					<img [src]="userInfo.users[0].avatarSmall" />
+				</span> 
+				<span>{{userInfo.users[0].nickname}}</span>
+				<span><img src="../../assets/images/1 (20).png" /></span>
+				<div *ngIf='userState==1'>
+					<p></p>
+					<ul>
+						<li><a href="/jumpPage?operate=user">个人信息</a></li>
+						<li><a href="/jumpPage?operate=safe">账户安全</a></li>
+						<li><a href="/jumpPage?operate=orgall">企业管理</a></li>
+						<!-- <li><a href="">推荐给好友</a></li>
+							<li><a href="">意见反馈</a></li> 
+						-->
+						<li><a href="http://www.feikongbao.com/download/">客户端下载</a></li>
+						<li id="logOut"><a href="/user/logout">安全退出</a></li>
+						<div></div>
+					</ul>
+				</div></li>
+		</ul>
+	</div>
+
+	<a id="js_im_tip_link" target="_blank" title="在线聊天" href="/group/"  class="im-icon"></a>

@@ -1,0 +1,290 @@
+.saas-top {
+    min-width: 1180px;
+    height: 100%;
+    background: #277BCF;
+    position: relative;
+}
+.saas-logo {
+    float: left;
+    height: 100%;
+}
+.saas-logo p:first-child {
+    line-height: 16px;
+    margin: 15px 10px 0 10px;
+}
+.saas-logo p:last-child {
+    border-left: 1px solid #fff;
+    margin-top: 25px;
+    line-height: 24px;
+    padding-left: 8px;
+}
+.saas-logo p {
+    float: left;
+    color: #fff;
+}
+.saas-nav {
+    float: left;
+    height: 100%;
+    font-size: 14px;
+    margin-left: 40px;
+    position: relative;
+    min-width: 560px;
+    line-height: 70px
+}
+.saas-nav>a {
+    display: inline-block;
+}
+.xiecheng span, a {
+    color: #277BCF;
+}
+.saas-nav-right {
+    display: block;
+    height: 100%;
+    line-height: 63px;
+    position: absolute;
+    right: 35px;
+}
+#saas-add {
+    position: relative;
+    cursor: pointer;
+    width: 60px;
+    height: 100%;
+}
+
+.saas-nav-right>li:nth-child(1) img {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.saas-nav-right>li img {
+    height: 100%;
+}
+#saas-add > ul {
+    position: absolute;
+    width: 103px;
+    font-size: 14px;
+    left: -21px;
+    top: 55px;
+    z-index: 400;
+    margin-top: 7px;
+}
+#saas-add>ul li:nth-child(6) {
+    padding-bottom: 5px;
+}
+#saas-add>ul p {
+    height: 13px;
+    width: 100%;
+    background: url(../../../assets/images/tianjia_01.png) no-repeat;
+}
+
+#saas-add>ul li {
+    line-height: 30px;
+    background: url(../../../assets/images/tianjia_02.png) repeat;
+}
+
+#saas-add>ul div {
+    height: 7px;
+    width: 100%;
+    background: url(../../../assets/images/tianjia_03.png) no-repeat;
+}
+
+#saas-search {
+    position: relative;
+    cursor: pointer;
+    width: 60px;
+    height: 100%;
+    display: block;
+}
+.saas-nav-right > li:nth-child(2) span>img {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.saas-nav-right>li {
+    float: left;
+}
+
+#saas-user {
+    position: relative;
+    cursor: pointer;
+}
+.saas-nav-right > li:nth-child(2) span>img {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.saas-nav-right > li:hover {
+    background: #4A90D7;
+}
+
+#saas-search form {
+    width: 294px;
+    position: absolute;
+    top: 55px;
+    left: -95px;
+    z-index: 12;
+    margin-top: 7px;
+}
+
+#saas-search form p {
+    height: 14px;
+    width: 100%;
+    background: url(../../../assets/images/sousuo_01.png) no-repeat;
+}
+
+#saas-search form>div {
+    height: 40px;
+    width: 100%;
+    background: url(../../../assets/images/sousuo_02.png) repeat;
+}
+#saas-search form span {
+    height: 8px;
+    width: 100%;
+    display: block;
+    background: url(../../../assets/images/sousuo_03.png) no-repeat;
+}
+#saas-search form>div div {
+    width: 270px;
+    border-radius: 5px;
+    height: 38px;
+    border: 1px solid #d0d0d0;
+    margin: 0 auto;
+}
+#saas-search form>div div img {
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 10px;
+    float: left;
+}
+#saas-search form>div div input {
+    display: block;
+    float: left;
+    height: 100%;
+    width: 230px;
+}
+
+.saas-nav-right>li:nth-child(3) {
+    height: 100%;
+}
+
+.saas-nav-right>li:nth-child(3) span:nth-child(1) {
+    width: 45px;
+    height: 45px;
+    margin-top: 12.5px;
+    margin-left: 16px;
+}
+.saas-nav-right>li:nth-child(3) span {
+    display: block;
+    float: left;
+}
+
+.saas-nav-right>li:nth-child(3) span:nth-child(1) img {
+    border-radius: 50px;
+}
+.saas-nav-right>li:nth-child(3) span:nth-child(2) {
+    color: #fff;
+    margin: 0 8px;
+    line-height: 70px;
+    /* max-width: 55px; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.saas-nav-right>li:nth-child(3) span:nth-child(3) {
+    margin-top: 1.8px;
+    margin-right: 16px;
+}
+.saas-nav-right>li:nth-child(3) span:nth-child(3) > img {
+    height: auto !important;
+    display: block;
+    margin-top: 30px;
+}
+#saas-user > div p {
+    height: 6px;
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 2;
+    background: url(../../../assets/images/update.png) no-repeat center top;
+}
+#saas-user > div {
+    position: absolute;
+    width: 102%;
+    padding-bottom: 5px;
+    overflow: hidden;
+    top: 64px;
+    left: -1%;
+    z-index: 11;
+}
+#saas-user > div > ul {
+    width: 96%;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 0px 5px #666666;
+    -moz-box-shadow: 0 0px 5px #666666;
+    -webkit-box-shadow: 0 0px 5px #666666;
+    -o-box-shadow: 0 0px 5px #666666;
+    position: relative;
+    z-index: 1;
+}
+
+#saas-user > div > ul li {
+    line-height: 35px;
+    padding: 2px 0;
+    border-bottom: 1px solid #d0d0d0;
+     background: url(http://7xthno.com2.z0.glb.qiniucdn.com/select-2.png) repeat; 
+}
+#saas-user span img {
+    vertical-align: top;
+}
+
+#saas-user div ul li#logOut {
+    border-bottom: none;
+}
+#saas-user > div > ul li a {
+    text-decoration: none;
+    color: #555;
+    height: 100%;
+    display: block;
+    width: 96%;
+    margin: 0 auto;
+    font-size: 14px;
+}
+.im-icon {
+    background: url(../../../assets/images/qchat.png);
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+}
+.saas-nav>a>li:hover {
+    background: #2D8FD7;
+}
+.saas-nav>a>li {
+    float: left;
+    width: 80px;
+    color: #fff;
+    position: relative;
+}
+
+.saas-nav>a>li img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    margin: 27px auto;
+}

@@ -1,0 +1,32 @@
+.schedule_list {
+    margin: 10px 0 0 20px;
+    height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.schedule_list li {
+    clear: both;
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--color-lanTxt);
+}
+.schedule_list li p:first-child {
+    margin-right: 10px;
+}
+
+.schedule_list li p {
+    float: left;
+}
+
+.schedule_list img {
+    width: auto;
+    height: auto;
+}
+.text-hidden {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 74%;
+}

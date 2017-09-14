@@ -1,0 +1,14 @@
+<!-- 页面主体 -->
+<div class="businessDocument">
+	<ul class="ulBox">
+		<li *ngFor="let item of listData" class="msg-li oflow" (click)="linkHref(item)">
+			<div class="lt"><img src="{{item.createAvatar}}"></div>
+			<div class="lt"><p class="">{{item.createNickname}}</p><p>{{item.content}}</p></div>
+			<div class="rt">{{item.createdOn | date:"y-MM-dd HH:mm"}}</div>
+			<b></b>
+		</li>
+	</ul>
+	<div class="flright clearfix">
+     	<ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+	</div>
+</div>

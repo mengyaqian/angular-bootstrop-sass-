@@ -1,0 +1,217 @@
+input{outline:none}  
+.saas-work-left .work-ul-2 .txtTop{width: 100%;height: 64px;line-height: 64px;text-align: center;margin-top:0;border-radius: 0;background: #D9DEE4;color: #333;font-weight:bold}
+.saas-left {
+    position: fixed;
+    left: 0;
+    z-index: 10;
+    top: 70px;
+    width: 160px;
+    background: #415e7a;
+    height: 100%;
+}
+.saas-left p:first-child {
+    margin-top: 0px;
+}
+.saas-left p {
+    position: relative;
+    color: #fff;
+}
+.left-p-click {
+    background: #E6EFF7 !important;
+    width: 100%;
+}
+.saas-left .left-p-click .messageNav {
+    background: url(../../../assets/images/message2.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+.saas-left p .messageNav{
+    display: block;
+    height: 48px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+.saas-left a:first-child {
+    margin-top: 20px;
+}
+
+.saas-left .left-p-click .messageNav1 {
+    background: url(../../../assets/images/message2.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+.saas-left p .messageNav1 {
+    background: url(../../../assets/images/message2_1.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+
+.saas-left p .messageNav1, .saas-left p .messageNav2, .saas-left p .messageNav3,.saas-left p .waitDealtNav,.saas-left p .remindNav,.saas-left p .warningNav,.saas-left p .businessApplyNav,.saas-left p .myOrderNav,.saas-left p .didiNav
+,.saas-left p .noticeAll,.saas-left .left-p-click .noticeAll,.saas-left .left-p-click .WorkReport,.saas-left p .WorkReport ,.saas-left .left-p-click .attendance,.saas-left p .attendance{
+    display: block;
+    height: 48px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+.saas-left a:first-child {
+    margin-top: 20px;
+}
+.xiecheng span, a {
+    color: #277BCF;
+}
+a {
+    color: #277BCF;
+    text-decoration: none;
+    outline: none;
+    font-size: 12px;
+}
+
+.saas-left p span {
+    display: block;
+    margin-left: 45px;
+    height: 48px;
+    line-height: 48px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 14px;
+}
+.saas-left p span {
+    margin-left: 0px!important;
+    padding-left: 45px;
+    background-repeat: no-repeat;
+    background-position: 15px center;
+}
+
+.left-p-click span {
+    color: #055FB9;
+}
+
+.saas-work-left {
+    position: fixed;
+    top: 70px;
+    left: 160px;
+    width: 200px;
+    height: 300px;
+    background: #EBF0F5;
+    /* padding-top: 30px; */
+    border-right: 1px solid #d0d0d0;
+}
+.saas-work-left .work-ul-2 {
+    width: 100%;
+    height: 100%;
+}
+.saas-work-left .work-ul-2>div {
+    width: 120px;
+    height: 34px;
+    line-height: 34px;
+    background: #277BCF;
+    margin: 15px auto;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.saas-work-left .work-ul-2>div p:first-child {
+    margin: 0 0 0 27px;
+    line-height: 32px;
+}
+.saas-work-left .work-ul-2>div p {
+    float: left;
+}
+.saas-work-left .work-ul-2>div p img {
+    width: auto;
+    height: auto;
+}
+
+.saas-work-left .work-ul-2>div p:last-child {
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 34px;
+}
+
+.saas-work-left .work-ul-2>li {
+    width:100%;
+    text-align: center;
+    height: 64px;
+    line-height: 64px;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: 14px;
+}
+.bk-list-1 {
+    background: #F7FBFF;
+    width: 100%;
+}
+.saas-left a:first-child {
+    margin-top: 20px;
+}
+.saas-left .left-p-click .waitDealtNav {
+    background: url(../../../assets/images/message2.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+.saas-left p .waitDealtNav {
+    background: url(../../../assets/images/message2_1.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+.saas-left .left-p-click .remindNav {
+    background: url(../../../assets/images/message3.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+.saas-left p .remindNav {
+    background: url(../../../assets/images/message3_1.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+.saas-left .left-p-click .warningNav {
+    background: url(../../../assets/images/message4.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+.saas-left p .warningNav {
+    background: url(../../../assets/images/message4_1.png) no-repeat 14px 14px;
+    background-size: 16px 21px;
+}
+.saas-left .left-p-click .businessApplyNav {
+    background: url(../../../assets/images/ccsqIcon2.png) no-repeat 14px 0px;
+    background-size: 20px 48px;
+}
+.saas-left p .businessApplyNav {
+    background: url(../../../assets/images/ccsqIcon1.png) no-repeat 14px 0px;
+    background-size: 20px 48px;
+}
+.saas-left .left-p-click .myOrderNav {
+    background: url(../../../assets/images/wdydIcon2.png) no-repeat 14px 0px;
+    background-size: 20px 48px;
+}
+.saas-left p .myOrderNav {
+    background: url(../../../assets/images/wdydIcon1.png) no-repeat 14px 0px;
+    background-size: 20px 48px;
+}
+.saas-left .left-p-click .didiNav {
+    background: url(../../../assets/images/cxycIcon2.png) no-repeat 14px 0px;
+    background-size: 20px 48px;
+}
+.saas-left p .didiNav {
+    background: url(../../../assets/images/cxycIcon1.png) no-repeat 14px 0px;
+    background-size: 20px 48px;
+}
+.saas-left .left-p-click .noticeAll {
+    background: url(../../../assets/images/fkbi4.png) no-repeat 14px 0px;
+}
+.saas-left p .noticeAll{
+    background: url(../../../assets/images/fkbi3.png) no-repeat 14px 0px;
+}
+.saas-left .left-p-click .WorkReport {
+    background: url(../../../assets/images/fkbi2.png) no-repeat 14px 0px;
+}
+.saas-left p .WorkReport{
+    background: url(../../../assets/images/fkbi1.png) no-repeat 14px 0px;
+}
+
+.saas-left .left-p-click .attendance {
+    background: url(../../../assets/images/fkbi11_2.png) no-repeat 14px 0px;
+}
+.saas-left p .attendance{
+    background: url(../../../assets/images/fkbi11.png) no-repeat 14px 0px;
+}

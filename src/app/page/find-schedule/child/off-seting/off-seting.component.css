@@ -1,0 +1,136 @@
+.saas-work-content{
+	position: relative;
+	margin-left: 361px;
+	background: #fff;
+	margin-top: 70px;
+}
+.work-content-1 .work-ul{
+	padding: 0 24px;
+	overflow-y: auto;
+	height: 860px;
+}
+.work-content-1 .work-ul li{
+	width: 100%;
+	height: 180px !important;
+	border: 1px solid #d0d0d0;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	position: relative;
+	margin-top:5px;
+}
+.work-content-1 .work-top{
+	padding-left:24px;
+    border-bottom: 1px solid #d0d0d0;
+    margin-top: 70px;
+}
+.work-content-1 .work-top p{
+    margin-bottom: 0;
+    line-height:50px;
+}
+.work-content-1 .work-ul li > span{
+	display: block;
+	right: 14px;
+	top: 6px;
+    position: absolute;
+    color: #2d8fd7;
+}
+.work-content-1 .work-ul li>div:first-child{
+	width: 100%;
+	overflow: hidden;
+}
+.work-content-1 .work-ul li>div:first-child div:first-child{
+	width: 50px;
+	float: left;
+}
+.work-content-1 .work-ul li>div:first-child div:last-child{
+	float: left;
+	margin-top: 10px;
+	margin-left: 20px;
+	max-width:80%;
+}
+.work-content-1 .work-ul li>div:nth-child(2){
+	padding:8px 20px 0 24px;
+	line-height: 22px;
+	height: 110px !important;
+	overflow: hidden;
+	text-indent: 2em;
+	color:#555;
+	word-wrap:break-word;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.work-content-1 .work-ul li>div:first-child div:last-child p:first-child{
+	white-space: nowrap;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+}
+.work-content-1 .work-ul li>div:first-child div:last-child p:last-child{
+	color: gray;
+	font-size: 15px;
+	margin: 2px 0 0 0 ;
+}
+.work-content-1 .work-ul li>div:first-child div:first-child img{
+	width: auto;
+	height: auto;
+	display: block;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.saas-work-left ul li a{
+    display: block;
+}
+
+.flright{float: right}
+.report-tt {
+    height: 48px;
+    line-height: 48px;
+    font-size: 14px;
+    padding-left: 20px;
+    border-bottom: 1px solid #D2D2D2;
+}
+.report-tt .bd {
+    width: 2px;
+    background:#277BCF;
+    display: inline-block;
+    height: 16px;
+    margin-top: 16px;
+    margin-right: 20px;
+    vertical-align: top;
+}
+.btnbox{width: 70px;margin: 10px auto;cursor: pointer}
+/*头部input*/
+.mg-cont{margin:20px 15px;}
+.mg-cont .mydatetime{border:1px solid #d2d2d2;height:30px;line-height:30px;border-radius:5px;width:120px}
+.mg-cont .pl30{padding-left:30px;}
+.mg-cont .w120{width:120px}
+.mg-cont input{text-indent:8px;display: inline-block;height: 30px;border-radius: 5px;margin-bottom: 0;padding: 0}
+/*弹框*/
+.Annualleave{margin:25px;overflow: hidden;}
+.Annualleave li{height:40px;line-height:40px;float:left;width: 45%;}
+.Annualleave li input[type="text"]{border:0;border-bottom:1px solid #d2d2d2;padding:0 5px;display: inline-block;width: 50%}
+
+.Annualleave li span{display:inline-block;width:40%;}
+.Annualleave li code{color:#f00;background:none;border:0}
+.Annualleave li:nth-child(odd){margin-right: 10%;}
+.Annualleave li input[type="text"].teinput{width:140px}
+.Annualleave li input[type="text"].adjustdays{border:1px solid #dedede;height:28px;line-height:28px;border-radius:4px;}
+.Annualleave li input[type="text"].adjust{width:80px;height:28px;line-height:28px;border:1px solid #dedede;border-radius:5px;text-align: center;}
+.Annualleave li em{border-radius:5px;border:1px solid #dedede;cursor: pointer; display:inline-block;width:25px;height:25px;line-height:25px;text-align: center;font-style:normal}
+.Annualleave li em.subtract{margin-right:10px}
+.Annualleave li em.augment{margin-left:10px;}
+.tiaobei{margin:10px 25px;}
+.tiaobei span{display:inline-block;width:20%; float: left;}
+.tiaobei code{color:#f00;background:none;border:0}
+.tiaobei textarea{border:1px solid #dedede;border-radius:5px;width:75%;height:100px;padding:5px;}
+.maxAnnual button{width:80px;height: 32px;text-align:center;line-height:32px;color:#fff;background-color:var(--color-main);float:right;margin:0 25px 25px;border-radius:4px;}
+.userSelect{-moz-user-select: none; /*火狐*/-webkit-user-select: none; /*webkit浏览器*/-ms-user-select: none; /*IE10*/ -khtml-user-select: none; /*早期浏览器*/ user-select: none;}/*解决多次点击变蓝*/
+/*假期详情*/
+.offsbox{width: 600px;height: auto;margin: 0 auto}
+.offsbox p{width: 100%;height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;border-left: 1px solid #ddd;;margin: 0;padding: 0}
+.offsbox p:first-child{border-top: 1px solid #ddd;}
+.offsbox p span{width: 25%;height:40px;display: inline-block;border-right: 1px solid #ddd;overflow: hidden;text-align: center; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;box-sizing: border-box;}
+.ft14{font-size: 14px}

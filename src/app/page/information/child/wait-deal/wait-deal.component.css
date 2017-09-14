@@ -1,0 +1,48 @@
+input{outline:none}  
+/*中间部分css**/
+.businessDocument{
+	/*min-width: 740px;
+	position:relative;
+	height:auto;*/
+	height:100%;
+	margin-left:160px;
+	background:#fff;
+	/*min-height:400px;*/
+    overflow: auto;
+}
+.msg-li {
+    height: 75px;
+    margin: 15px;
+    padding: 8px 20px;
+    border: 1px #D2D2D2 dashed;
+    cursor: pointer;
+}
+.oflow {
+    overflow: hidden;
+}
+
+li {
+    list-style: none;
+}
+.lt {
+    float: left;
+}
+.msg-li .rt {
+    line-height: 50px;
+}
+.rt {
+    float: right;
+}
+.msg-li p {
+    line-height: 25px;
+    margin-bottom: 0;
+}
+.msg-li img {
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.ulBox{margin-top:85px;}
+.flright{float:right;height: 60px;margin-right: 20px;}
+.clearfix{zoom:1;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}

@@ -1,0 +1,123 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="tabs">
+			<p  [class]="tableCurreny == 1 ? 'active':''" (click)="tabChange(1)">年假余额</p>
+			<p  [class]="tableCurreny == 2 ? 'active':''" (click)="tabChange(2)">调休余额</p>
+		</div>
+		<div class="mg-cont">
+			<div class="nameDiv"  *ngIf="tableCurreny == 1">
+				<select name="year" [(ngModel)]="year" class="w120 myselect">
+					<option value="0">全部</option>
+					<option *ngFor="let i of yearList" [value]="i.year">{{i.year}}</option>
+				</select>
+			</div>
+			<div class="nameDiv" *ngIf="tableCurreny == 2">
+				清空日期：<input type="text" name="yearClear" [(ngModel)]="clearYear" appDateDirective (selected)="dateSelected($event)">
+			</div>
+			<div class="btnBox">
+				<div  class="btn btn-primary" (click)="search()">查询</div>
+			</div>	
+		</div>
+		<!---年假余额-->
+		<div class="dbody" *ngIf="tableCurreny ==1">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>姓名</td>
+							<td>职位</td>
+							<td>部门</td>
+							<td>费控宝账号</td>
+							<td>入司日期</td>
+							<td>工作年限</td>
+							<td>年假年度</td>
+							<td>年假天数</td>
+							<td>剩余天数(小时)</td>
+							<td>使用天数(小时)</td>
+							<td>冻结天数(小时)</td>
+							<td>清空日期</td>
+						</tr>
+					</thead>
+					<tbody>
+							<tr class="check-detail" *ngFor="let item of listData">
+									<td>{{item.userName}}</td>
+									<td>{{item.position}}</td>
+									<td>{{item.department}}</td>
+									<td>{{item.mobile}}</td>
+									<td>{{item.entryDate ? (item.entryDate | date:"y-MM-dd") : '--' }}</td>
+									<td>{{item.workYears || '--'}}</td>
+									<td>{{item.yearRang || '--'}}</td>
+									<td>{{item.restDays}}</td>
+									<td>{{item.residueDays}}(<span>{{item.residueHours}}</span>小时)</td>
+									<td class="firstTd" (click)="useDay(useday,item.userId,item.ruleId,item.usedHours,'LT003')">{{item.usedDays}}(<span>{{item.usedHours}}</span>小时)</td>
+									<td>{{item.frozenRestDays}}(<span>{{item.frozenRestHours}}</span>小时)</td>
+									<td>{{item.clearDate ? (item.clearDate | date:"y-MM-dd") : '--'}}</td>
+							</tr>
+							<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+		</div>
+		<!--调休余额-->
+		<div class="dbody" *ngIf="tableCurreny ==2">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>姓名</td>
+							<td>职位</td>
+							<td>部门</td>
+							<td>费控宝账号</td>
+							<td>规定调休天数</td>
+							<td>加班申请调休天数(小时)</td>
+							<td>剩余天数(小时)</td>
+							<td>使用天数(小时)</td>
+							<td>冻结天数(小时)</td>
+							<td>清空日期</td>
+						</tr>
+					</thead>
+					<tbody>
+							<tr class="check-detail" *ngFor="let item of listData">
+								<td>{{item.userName}}</td>
+								<td>{{item.positionName}}</td>
+								<td>{{item.department}}</td>
+								<td>{{item.mobile}}</td>
+								<td>{{item.setedSumDays}}</td>
+								<td>{{item.restSumDays}}(<span>{{item.restSumHours}}</span>小时)</td>
+								<td>{{item.restDays}}(<span>{{item.restHours}}</span>小时)</td>
+								<td class="firstTd" (click)="useDay(useday,item.userId,item.ruleId,item.restedSumHours,'LT004')">{{item.restedSumDays}}(<span>{{item.restedSumHours}}</span>小时)</td>
+								<td>{{item.frozenRestDays}}(<span>{{item.frozenRestHours}}</span>小时)</td>
+								<td>{{item.clearDate | date:'y-MM-dd'}}</td>
+							</tr>
+							<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+		</div>
+		<div class="flright clear" *ngIf="listData.length>0">
+			<ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+		</div>
+    </div>
+</div>
+<!--使用天数查看-->
+<ng-template #useday let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<p class="modal-title">使用详情</p>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="dbody">
+				<table class="report-tb1" border="1">
+						<thead>
+							<tr><td>开始日期</td><td>结束日期</td><td>请假时长</td><td>备注</td></tr>
+						</thead>
+						<tbody>
+							<tr class="check-detail" *ngFor="let item of usedayInfo">
+								<td>{{item.leaveStart | date:"y-MM-dd"}}</td>
+								<td>{{item.leaveEnd | date:"y-MM-dd"}}</td>
+								<td>{{item.leaveTimeSpanM}}</td>
+								<td>{{item.leaveDesc}}</td>
+							</tr>
+						</tbody>
+				</table>
+		</div>	
+	</div>
+</ng-template>

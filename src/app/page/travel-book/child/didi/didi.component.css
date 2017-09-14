@@ -1,0 +1,142 @@
+input,select{outline:none}  
+.examinationApprova-top{
+	height: 47px;
+	padding: 0 24px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	border-bottom: #D2D2D2 1px solid;
+}
+.examinationApprova-top p{
+	height: 16px;
+	line-height: 16px;
+	padding-left: 13px;
+	margin-top: 16px;
+	border-left: #277BCF 2px solid;
+}
+
+/*中间部分css**/
+.businessDocument{
+	min-width: 740px;
+	position:relative;
+	height:auto;
+	margin-left:160px;
+	background:#fff;
+	min-height:400px;
+    overflow: initial;
+    margin-top:70px;
+}
+.businessDocument-select{
+	width: 96%;
+	height: auto;
+	margin: 0 auto;
+	position: relative;	
+    z-index: 7;
+    padding-top:20px;
+}
+.businessDocument-select > div{
+	height: 30px;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 12px;
+	position: relative;
+}
+.businessDocument-select > div > span{
+	display: block;
+	float: left;
+	line-height: 30px;
+	margin-right: 10px;
+}
+.businessDocument-select > div:first-child > input{
+	width:160px ;
+	height: 30px;
+	padding:6px 0px 6px 8px;
+	display: block;
+	float: left;
+	border: 1px #D2D2D2 solid;
+	border-radius: 4px;
+}
+
+.businessDocument-select > div > img{
+	width: 10px;
+	height: 5px;
+	display: block;
+	position: absolute;
+	color: #333333;
+	right: 10px;
+	top: 12px;
+}
+.businessDocument-select > div > p{
+	padding-left: 10px;
+	display: block;
+	line-height: 30px;
+	cursor: pointer;
+	color: #333333;
+}
+.businessDocument-select > div > div{
+	width: 100%;
+	max-height: 150px;
+	background: #FAFAFA;
+	overflow: hidden;
+	display: none;
+	border-radius: 4px;
+	position: absolute;
+	color: #333333;
+	top: 32px;
+	box-shadow: 0 2px 5px #999999;
+	-moz-box-shadow: 0 2px 5px #999999;
+	-webkit-box-shadow: 0 2px 5px #999999;
+	-o-box-shadow: 0 2px 5px #999999;
+}
+.businessDocument-select > div > div > span{
+	padding-left:10px ;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	cursor: default;
+	color: #333333;
+}
+.businessDocument-select > div > div > span:hover{
+	background: #C7C7C7;
+}
+.businessDocument-select > div > div > span:last-child{
+	margin-bottom: 15px;
+}
+.businessDocument-select > div:nth-child(1) > input{
+	width:105px ;
+	height: 30px;
+	padding:6px 0px 6px 8px;
+	display: block;
+	float: left;
+	border: 1px #D2D2D2 solid;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.businessDocument-select > div:nth-child(1) > img:first-child{
+	right: 150px;
+}
+.businessDocument-select > div:nth-child(1) > i{
+	display: block;
+	float: left;
+	line-height: 30px;
+	margin:0 10px;
+}
+
+.addBussness{width:auto;padding:0 8px;line-height:30px;text-align:center;border-radius:4px;cursor:pointer;background:#277BCF;color:#fff}
+
+.selects{height: 28px;line-height: 28px; margin: 0;padding: 0 4px;width: 120px;height: 30px;border-radius: 4px}
+.toCity{width: 110px;
+    height: 30px;
+    padding: 6px 0px 6px 8px;
+    display: block;
+    float: left;
+    border: 1px #D2D2D2 solid;
+	border-radius: 4px;}
+	.btnBox{font-size: 14px;float:right;padding: 10px 2%;}
+	.btnBox .btn{font-size: 14px;margin-right: 20px}
+	.disabled{background: #ddd;border:1px solid #d2d2d2}
+	.clearfix{zoom:1;}
+	.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+	thead tr td,tbody tr td{text-align: center;font-weight: normal}
+	tbody tr td input{margin:0;cursor: pointer}
+	.tLink{color:#277BCF;cursor: pointer}
+	.businessDocument-select .addmyBtn{height: auto;line-height: 1.25;font-size: 14px}

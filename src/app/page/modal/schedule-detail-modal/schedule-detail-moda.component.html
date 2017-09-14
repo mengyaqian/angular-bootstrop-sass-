@@ -1,0 +1,93 @@
+	<div class="modal-header modalheader">
+		<h6 class="modal-title">日程安排</h6>
+		<button type="button" class="close" aria-label="Close" (click)="close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		
+
+
+	<div class="plan-list" style="max-height: 650px;">
+		<ul>
+			<li>
+				<p>
+					<img src="../../../assets/images/dsadhushosia (4).png">
+				</p>
+				<p>日程标题：</p><p class="text-hidden">{{detailData.name}}</p>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<li>
+				<p><img src="../../../assets/images/dsadhushosia (9).png"></p>
+				<p>时间</p><div><p>{{detailData.sDate}} </p><p><b>至</b></p><p>{{detailData.eDate}} </p></div>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<li>
+				<p>
+					<img src="../../../assets/images/dsadhushosia (2).png">
+				</p>
+				<p>重复</p><p value="0"><span *ngIf='detailData.isRepeat==0'>不重复</span></p>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<li>
+				<p><img src="../../../assets/images/dsadhushosia (1).png"></p>
+				<p>参与人员</p>
+				<ul>
+					<li>
+						<p><img src="http://filesrelease.feikongbao.com/20161226100245929787.png"></p>
+						<p><img src="../../../assets/images/dsadhushosia (16).png"></p>
+						<p>薛梅123</p>
+					</li>
+				</ul>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<li>
+				<p><img src="../../../assets/images/dsadhushosia (3).png"></p>
+				<p>地点</p><p class="overflowy_addr">{{detailData.address}}</p>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<li>
+				<p><img src="../../../assets/images/dsadhushosia (13).png"></p>
+				<p>日程详情</p><p class="overflowy_desc">{{detailData.content}}</p>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<li>
+				<p><img src="../../../assets/images/dsadhushosia (5).png"></p>
+				<p>附件</p><div>（无）</div>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<li>
+				<p><img src="../../../assets/images/dsadhushosia (6).png"></p>
+				<p>公开范围</p><p type="0">仅自己</p>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<p style="clear: both;height: 0px;"></p>
+			<li>
+				<p><img src="../../../assets/images/dsadhushosia (12).png"></p>
+				<p>提醒时间</p>
+				<p><span>不提醒</span><span><b></b></span></p>
+			</li>
+			<p style="clear: both;height: 0px;"></p>
+			<div id="2645" class="plan-button"></div>
+			<p style="clear: both;"></p>
+			</ul>
+			<div class="plan-list-input">
+				<input type="button" value="取消日程" class="deletg" (click)='chanel()'>
+				<input type="button" value="修改" (click)='update()'>
+				<p style="clear: both;"></p>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>

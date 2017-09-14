@@ -1,0 +1,18 @@
+<div *ngIf="cityShow.isShow" class="select-city" [ngStyle]="{'left':cityShow.left,'top':cityShow.top}">
+    <div class="city-hots" *ngIf="!issearch">
+        <span class="close" (click)="closeCity()">×</span>
+        <div class="tt">
+        <span>热门城市</span><b>也可以输入城市全拼、汉字</b>
+        </div>
+        <div class="hots">
+            <span (click)="selectCity('北京')" class="hot-options">北京</span>
+            <span (click)="selectCity('上海')" class="hot-options">上海</span>
+            <span (click)="selectCity('深圳')" class="hot-options">深圳</span>
+            <span (click)="selectCity('广州')" class="hot-options">广州</span>
+            <span *ngFor="let item of cityListShow"  class="hot-options" (click)="selectCity(item.name)">{{item.city}}</span>
+        </div>
+    </div>
+	 <div class="searchs" *ngIf="issearch">
+            <label *ngFor="let items of cityList | citySearch:cityShow.city" (click)="selectCity(items.name)" class="current">{{items.path}}</label>
+	</div>
+</div>

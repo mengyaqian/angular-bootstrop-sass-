@@ -1,0 +1,264 @@
+#register{background: #E9ECF0;height: 100%;}  
+input,button{outline:none}  
+header {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    background: #277BCF;
+    position: fixed;
+    top: 0px;
+    z-index: 8;
+}
+.saas-logo {
+    float: left;
+    height: 100%;
+}
+.saas-logo p:first-child {
+    line-height: 16px;
+    margin: 15px 10px 0 10px;
+}
+.saas-logo p:last-child {
+    border-left: 1px solid #fff;
+    margin-top: 25px;
+    line-height: 24px;
+    padding-left: 8px;
+}
+.saas-logo p {
+    float: left;
+    color: #fff;
+}
+
+.register {
+    width: 1100px;
+    margin: 170px auto;
+    width:70%;
+ 
+    background: #fff;
+    border-top:10px solid #277BCF
+}
+.register>div {
+    width: 700px;
+    margin: 0 auto;
+}
+.register-top {
+    width: 100%;
+    height: 90px;
+    position: relative;
+}
+.register-1 {
+    display: block;
+    width: 550px;
+    margin: 20px auto 0;
+}
+.register-2 {
+    height: 280px;
+    margin: 50px auto;
+    padding-top: 10px;
+    position: relative;
+}
+.register-3 {
+    height: 410px;
+    margin: 0 auto;
+}
+.register-4 {
+    height: 410px;
+    margin: 0 auto;
+}
+.register-top p:first-child {
+    margin-top: 50px;
+}
+.register-top p:nth-child(2) span:nth-child(1) {
+    left: 20px;
+    color: #000;
+}
+.register-top p:nth-child(2) span:nth-child(2) {
+    left: 317px;
+}
+.register-top p:nth-child(2) span:nth-child(3) {
+    right: 20px;
+}
+.register-top p:nth-child(2) span {
+    display: block;
+    position: absolute;
+    top: 45px;
+    color: #9C9C9C;
+}
+.register-top p:nth-child(3) span:nth-child(1) {
+    position: absolute;
+    left: 48px;
+    top: 6px;
+    font-size: 18px;
+    color: #fff;
+}
+.register-top p:nth-child(3) span:nth-child(2) {
+    position: absolute;
+    left: 344px;
+    top: 6px;
+    font-size: 18px;
+    color: #fff;
+}
+.register-top p:nth-child(3) span:nth-child(3) {
+    position: absolute;
+    right: 48px;
+    top: 6px;
+    font-size: 18px;
+    color: #fff;
+}
+.register-1 div:nth-child(1) p:nth-child(2) input {
+    width: 340px;
+}
+.register-1>div .register-div1 {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    right: -132px;
+}
+.register-1>div .register-div1 span:first-child {
+    height: 20px;
+    width: 20px;
+    background: url(../../assets/images/u218.png) no-repeat;
+    margin: 15px 10px;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+}
+.register-1>div .register-div1 span:last-child {
+    font-size: 12px;
+}
+.register-1 div:nth-child(3) p:nth-child(2) {
+    width: 240px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+.register-1 div:nth-child(3) p:nth-child(2) input {
+    width: 230px;
+}
+.register-1 div:nth-child(3) p:nth-child(3) {
+    width: 100px;
+    height: 50px;
+    border: 0;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+.register-1>div .register-div1 {
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    right: -132px;
+}
+.register-1 div:nth-child(5) p:nth-child(2) {
+    width: 350px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+.register-1 div:nth-child(5) p:nth-child(2) input {
+    width: 340px;
+}
+.register-1 div:nth-child(7) p:nth-child(2) {
+    width: 350px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+.register-1 div:nth-child(7) p:nth-child(2) input {
+    width: 340px;
+}
+
+.register-1>input,.register-href1 {
+    display: block;
+    width: 352px;
+    height: 50px;
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+    margin-right: 78px;
+    background: #E6E6E6;
+    color: #999999;
+    border-radius: 5px;
+    cursor: pointer
+}
+
+
+.register-1>div .register-div1 span {
+    display: block;
+    float: left;
+    color: #F01818;
+}
+
+.register-1 div p input {
+    height: 100%;
+    border-radius: 3px;
+    border: 0;
+    padding-left: 10px;
+    width: 100%;
+}
+.register-1>div {
+    position: relative;
+}
+.register-1 div p:first-child {
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: right;
+    color: #666666;
+}
+.register-1 div:nth-child(1) p:nth-child(2) {
+    width: 350px;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+.register-1 div p {
+    float: left;
+}
+
+
+.register-top p img {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+.register img {
+    width: auto;
+    height: auto;
+}
+.nodisabled{background:#277BCF;color:#fff}
+.register-2 div:nth-child(1) {
+    color: #fff;
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
+    background: #277BCF;
+    margin: 0 auto;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 3px;}
+    .injoin{width:300px;line-height:40px;text-align:right;color:#277BCF;margin:0 auto;font-size:14px;cursor:pointer}
+    .cont{line-height:32px;text-align:center;padding:30px 20px;color:#666}
+    .register-2-2{width:400px;margin:0 auto;}
+.register-2-2 p{
+    width: 80%;
+    height: 50px;
+    margin: 40px auto 0;
+    border-radius: 5px;
+}
+.register-2-2 p input {text-indent: 5%;width:100%;height:48px;line-height: 48px;padding:0}
+.register-2-2 .error2{color:red;margin-top:10px;width:100%;text-align:center;border:0}
+.imgp{width: 120px;height: 120px;margin: 0 auto 20px}
+.tc{text-align: center;line-height: 2;}
+.mybtn{display: inline-block;width: 200px;height: 50px;background: #277BCF;margin-right: 6px;border-radius: 6px;line-height: 50px}
+.mybtn a{color: #fff;display: block;}
+.error{color: red;font-size: 12px;position: absolute;right: -75px;top: 16px;text-align: left;background: #fff}
+.pR{position: relative}
+.hide{display:none}

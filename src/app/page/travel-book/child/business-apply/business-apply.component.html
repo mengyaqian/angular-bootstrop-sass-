@@ -1,0 +1,59 @@
+<!-- 页面主体 -->
+<div class="businessDocument">
+		<div class="businessDocument-select clearfix" >
+			 <div>
+				 <span>单据编号</span>
+				 <input type="text" [(ngModel)]="billNo" placeholder="PTDEMO201611110001">
+			 </div>
+			 <div style="width:0;height:0;border:none"></div>
+			 <div>
+				 <span>创建时间</span>
+				 <input type="text" appDateDirective  (selected)="dateSelected($event,'begin')" readonly="readonly" [(ngModel)]="beginDate" >
+				 <i>~</i>
+				 <input type="text"  appDateDirective (selected)="dateSelected($event,'end')"  readonly="readonly" [(ngModel)]="endDate" > 
+			 </div> 
+			 <div>
+				 <select class="selects" [(ngModel)]="status" (ngModelChange)="setInfo($event)">
+					<option value="-2">全部状态</option>
+					<option *ngFor="let i of listStatus" [value]="i.status">{{i.name}}</option>
+				 </select>
+			 </div>
+			 
+			 <div (click)="getList()" class="addBussness">搜索</div>
+			 <div class="addBussness" title="新增出差申请单" (click)="creatBill(1,-1,0)">新增出差申请单</div>
+		 </div>
+		 <div class="dbody">
+				 <table class="report-tb1" border="1">
+						 <thead>
+							 <tr>
+								 <td>单据编号</td>
+								 <td>单据类型</td>
+								 <td>记账部门</td>
+								 <td>记账项目</td>
+								 <td>事由</td>
+								 <td>金额</td>
+								 <td>提交时间</td>
+								 <td>审核状态</td>
+								 <td>操作</td>
+							 </tr>
+						 </thead>
+						 <tbody>
+								<tr class="check-detail" *ngFor="let item of listData">
+										<td (click)="creatBill(2,item.uuid,item.billApprovalStatus)" title="{{item.orderNo}}" class="firstTd">{{item.orderNo}}</td>
+										<td>{{item.typeName}}</td>
+										<td>{{item.tallyDepartName}}</td>
+										<td>{{item.tallProductName == 0 ?'':item.tallProductName}}</td>
+										<td title="{{item.remark}}">{{item.remark}}</td>
+										<td title="{{ {uuid:item.uuid,listMoney:listMoney} | listMoneyFormat}}">{{ {uuid:item.uuid,listMoney:listMoney} | listMoneyFormat}}</td>
+										<td>{{item.createOn.time | date:"y-MM-dd"}}</td>
+										<td>{{item.billApprovalStatus | listAuditStatus}}</td>
+										<td class="goOrder colorBlue">{{item.billExpenseStatus == 1?'去报销':'--'}}</td>
+								</tr>
+								<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+						 </tbody>
+				 </table>
+				 <div class="flright clear" *ngIf="listData.length>0">
+				    <ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+				 </div>
+		 </div>
+	 </div>

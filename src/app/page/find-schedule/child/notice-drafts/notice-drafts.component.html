@@ -1,0 +1,23 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+        <div class="work-top">
+            <p>草稿箱</p>
+        </div>
+        <ul class="work-ul notice-ul">
+			<li *ngFor="let item of listData">
+				 <div>
+					<div>
+						<img src="../../../assets/images/fkb (5).png" />
+					</div> 
+					<div>
+					<p>{{item.title}}</p>
+					<p>{{item.username}}{{item.createDate}}</p>
+					</div>
+				</div>
+				<div>
+					<p>{{item.content}}</p>
+				</div>
+			</li>
+        </ul>
+    </div>
+</div>

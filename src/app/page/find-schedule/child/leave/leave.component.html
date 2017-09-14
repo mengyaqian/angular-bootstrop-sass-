@@ -1,0 +1,98 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="tabs">
+			<p  [class]="tableCurreny == 1 ? 'active':''" (click)="tabChange(1)">加班汇总统计</p>
+			<p  [class]="tableCurreny == 2 ? 'active':''" (click)="tabChange(2)">加班明细统计表</p>
+		</div>
+		<div class="mg-cont">
+			<span>日期从</span>
+			<input type="text"  [(ngModel)]="startdate" appDateDirective (selected)="dateSelected($event,'begin')" readonly>至
+			<input type="text"  [(ngModel)]="enddate"   appDateDirective (selected)="dateSelected($event,'end')" readonly>
+			<div class="nameDiv" [hidden]="!isShow">
+				<span class="pl30">姓名</span>
+				<input class="w120" name="username" [(ngModel)]="username" type="text">
+			</div>
+			<div class="nameDiv" [hidden]="!isShow">
+				<span class="pl30">部门</span>
+				<select [(ngModel)]="departId" class="w120 myselect">
+					<option value="-1">全部</option>
+					<option value="0">未分组</option>
+					<option *ngFor="let i of departList" [value]="i.departId">{{i.name}}</option>
+				</select>
+			</div>
+			<div class="btnBox">
+				<div  class="btn btn-primary" (click)="getList()">查询</div>
+				<div [hidden]="!isShow" class="btn btn-primary" (click)="reset()" >重置</div>
+				<div  class="btn btn-primary" (click)="importCon()">导出</div>
+			</div>	
+		</div>
+		<!--加班汇总-->
+		<div class="dbody" *ngIf="tableCurreny ==1">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>员工姓名</td>
+							<td>手机号码</td>
+							<td>所属部门</td>
+							<td>职位</td>
+							<td>职级</td>
+							<td>加班总时长</td>
+							<td>申请调休时长</td>
+							<td>申请加班费时长</td>
+						</tr>
+					</thead>
+					<tbody>
+							<tr class="check-detail" *ngFor="let item of listData">
+									<td title="{{item.userName}}" class="firstTd" (click)="seeDetail(item.userName,item.departmentId,item.department)">{{item.userName}}</td>
+									<td>{{item.mobile}}</td>
+									<td>{{item.department == '' ? '未分组' : item.department}}</td>
+									<td>{{item.position}}</td>
+									<td>{{item.positionLevel}}</td>
+									<td>{{item.overWorkHours}}</td>
+									<td>{{item.restHours}}</td>
+									<td>{{item.overtimePay}}</td>
+							</tr>
+							<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+			<div class="flright clear" *ngIf="listData.length>0">
+				<ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+			</div>
+		</div>
+		<!--加班明细-->
+		<div class="dbody" *ngIf="tableCurreny ==2">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>员工姓名</td>
+							<td>所属部门</td>
+							<td>职位</td>
+							<td>开始时间</td>
+							<td>结束时间</td>
+							<td>加班时长(小时)</td>
+							<td>加班核算方式</td>
+							<td>提交时间</td>
+							<td>加班事由</td>
+						</tr>
+					</thead>
+					<tbody>
+							<tr class="check-detail" *ngFor="let item of listData">
+									<td title="{{item.userName}}">{{item.userName}}</td>
+									<td>{{item.department == '' ? '未分组' : item.department}}</td>
+									<td>{{item.position}}</td>
+									<td>{{item.startTime}}</td>
+									<td>{{item.endTime}}</td>
+									<td>{{item.overWorkHours}}</td>
+									<td>{{item.overworkType}}</td>
+									<td>{{item.submitDate}}</td>
+									<td>{{item.desc}}</td>
+							</tr>
+							<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+			<div class="flright clear" *ngIf="listData.length>0">
+				<ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+			</div>
+		</div>
+    </div>
+</div>

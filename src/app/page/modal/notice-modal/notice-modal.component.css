@@ -1,0 +1,106 @@
+.release-affiche-box {
+    overflow-y: scroll;
+    height: 500px;
+    padding: 0 28px;
+    margin-bottom: 20px;
+}
+.release-affiche-box > p {
+    margin: 14px 0 7px;
+    color: #333333;
+}
+.release_input_box {
+    position: relative;
+    cursor: pointer;
+}
+
+.release_input {
+    min-height: 40px;
+    line-height: 40px;
+    text-indent: 10px;
+    border: 1px solid #d0d0d0;
+    position: relative;
+    cursor: pointer;
+}
+
+.release_input_box {
+    position: relative;
+    cursor: pointer;
+}
+.release_placeholder {
+    color: gray;
+}
+.release_input > img {
+    position: absolute;
+    right: 10px;
+    bottom: 18px;
+}
+.release-affiche-box img {
+    width: auto;
+    height: auto;
+}
+.release_input_ul {
+    position: absolute;
+    bottom: -160px;
+    left: -1px;
+    z-index: 1;
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    width: 100%;
+    display: none;
+    max-height: 120px;
+    overflow-y: scroll;
+}
+.release_input_ul li {
+    height: 40px;
+    line-height: 40px;
+    color: gray;
+    cursor: pointer;
+    text-indent: 10px;
+}
+.super-textarea {
+    min-height: 240px;
+    width: 100%;
+}
+.affiche-footerButton {
+    height: 32px;
+    padding: 20px 0;
+}
+.affiche-footerButton input {
+    display: block;
+    float: right;
+    border-radius: 3px;
+    height: 32px;
+    line-height: 32px;
+    width: 80px;
+    color: #fff;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.send-file {
+    height: 42px;
+    line-height: 42px;
+    clear: both;
+    color: gray;
+    margin-top: -2px;
+}
+
+.send-file p:nth-child(1) {
+    float: left;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.send-file p:nth-child(1) > span {
+    overflow: hidden;
+    display: block;
+    float: left;
+    margin-right: 5px;
+}
+.send-file p:nth-child(1) > span > img {
+    display: block;
+    margin-top: 12px;
+}
+.send-file p:nth-child(1) label {
+    cursor: pointer;
+    color: #0275d8;
+}

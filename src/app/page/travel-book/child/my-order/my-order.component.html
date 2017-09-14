@@ -1,0 +1,97 @@
+<!-- 页面主体 -->
+<div class="businessDocument">
+	<div class="examinationApprova-top">
+		<p>我的订单</p>
+	</div>
+   <!-- 顶部pic -->
+   <div class="travelBook-right-establish" >                                            
+		<a href="<%=baseHostUrl%>/trave/xiecheng?info=-1,all,order" target="_blank">
+			 <img class="imag2" border="0" src="../../../assets/images/xiechengdingdan.png" alt="" style="width:160px;height:88px" />
+		</a>
+	</div>  
+		<!-- table切换 -->                                                              
+	<div class="travelBook-right-center" style="width:96%;margin: 15px auto; ">
+		  <ul class="travelBook-oneList travelBook-oneList-one-two" id="trave-chhoose">
+			<li  (click)="getList(2)" [class.travelBook-right-centerCover]="tbType==2" style="border-left:1px #d2d2d2 solid;" >机票订单</li>
+			<li  (click)="getList(3)" [class.travelBook-right-centerCover]="tbType==3">酒店订单</li>
+			<li  (click)="getList(1)" [class.travelBook-right-centerCover]="tbType==1" >火车票订单</li> 
+		  </ul> 
+	</div>	
+	<div id="js_top_menu" class="businessDocument-select clearfix" >
+		<div>
+			<span>订单号</span>
+			<input type="text" placeholder="PTDEMO201611110001" [(ngModel)]="approvalNo">
+		</div>
+		<div style="width:0;height:0;border:none"></div>
+		<div>
+			<span>出行日期</span>
+			<input type="text" class="datetime" id="begin-date"  [(ngModel)]="beginDate" appDateDirective  (selected)="dateSelected($event,'begin')" readonly>
+			<i>~</i>
+			<input type="text" class="datetime" id="end-date"  [(ngModel)]="endDate" appDateDirective (selected)="dateSelected($event,'end')" readonly> 
+		</div> 
+		<div>
+			<span>订单状态</span>
+			<select class="selects" [(ngModel)]="orderstatusDefine">
+			<option *ngFor="let i of orderStatus" [value]="i.status">{{i.name}}</option>
+			</select>
+		</div>
+		<div>
+			<span>{{cityTxt}}</span>
+			<input class="toCity" type="text" [(ngModel)]="toCity" placeholder="请选择{{cityTxt}}">
+		</div>
+		<div>
+			<span>支付方式</span>
+			<select class="selects" [(ngModel)]="payStatusDefine">
+			  <option *ngFor="let i of payStatus" [value]="i.status">{{i.name}}</option>
+			</select>
+		</div>
+	</div>	
+	<div class="btnBox clearfix">
+		<div (click)="getList(tbType)" class="btn btn-primary" >查询</div>
+		<div (click)="reset()" class="btn btn-primary">重置</div>
+		<div (click)="getList(tbType)" class="btn disabled">报销</div>
+	</div>  
+	<div class="dbody">
+			<table id="js_year_tb" class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>选择</td>
+							<td>订单号</td>
+							<td>服务提供商</td>
+							<td>订单金额</td>
+							<td *ngIf="tbType==2 || tbType==1">出发城市</td>
+							<td *ngIf="tbType==2 || tbType==1">到达城市</td>
+							<td *ngIf="tbType==3" >出差城市</td>
+							<td *ngIf="tbType==2" >航空公司</td>
+							<td *ngIf="tbType==1" >坐席</td>
+							<td *ngIf="tbType==3" >酒店名称</td>
+							<td>出行日期</td>
+							<td>支付方式</td>
+							<td>订单状态</td>
+						</tr>
+					</thead>
+
+					<tbody id="js_bill_ullist">
+						<tr class="check-detail" *ngFor="let item of listData">
+								<td><input type="checkbox"></td>
+								<td title="{{item.orderNo}}" class="tLink">{{item.orderNo}}</td>
+								<td>携程商旅</td>
+								<td>{{item.amount | number:"1.2-2"}}</td>
+								<td *ngIf="tbType==2 || tbType==1">{{item.city}}</td>
+								<td *ngIf="tbType==2 || tbType==1">{{item.toCity}}</td>
+								<td *ngIf="tbType==3">{{item.cityName}}</td>
+								<td *ngIf="tbType==2 || tbType==3">{{item.orderName}}</td>
+								<td *ngIf="tbType==1">{{item.levelName}}</td>
+								<td>{{item.startDate.time | date:"y-MM-dd"}}</td>
+								<td>{{item.payType == 0 ?'企业支付':'个人支付'}}</td>
+								<td>{{item.status == 0 ?'已支付':(item.status == 1 ? '已出行':'已报销')}}</td>
+						</tr>
+						<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+
+			</table>
+			<div class="flright clear" *ngIf="listData.length>0">
+			   <ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+			</div>
+	</div>
+</div>

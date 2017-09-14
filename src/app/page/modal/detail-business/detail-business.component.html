@@ -1,0 +1,454 @@
+<div class="modal-header">
+	<p class="modal-title">出差申请单</p>
+	<button type="button" class="close" aria-label="Close" (click)="closeBill()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="bill-bus-pubpanl show-width modal-body"  [ngStyle]="{'height':windowHeight,'overflow-y':'auto' }">
+        <div class="documentPublic-box-bottom ps-container" style="padding-top:20px;" *ngIf="billInfo.orderNo != undefine">
+            <div class="documentPublic-box-nav">
+                <span></span>
+                <ul class="">
+                    <li (click)="tableSwitch(0)"  [ngClass]="{'top-menu':true,'documentPublic-nav-cover':table==0}">单据基本信息</li>
+                    <li (click)="tableSwitch(1)"  [ngClass]="{'top-menu':true,'documentPublic-nav-cover':table==1}" *ngIf="billInfo.cashAdvanceBill"  >现金预支信息</li>         	
+                    <li (click)="tableSwitch(2)"  [ngClass]="{'top-menu':true,'documentPublic-nav-cover':table==2}" *ngIf="billInfo.sign">财务签收信息</li>
+                    <li (click)="tableSwitch(3)"  [ngClass]="{'top-menu':true,'documentPublic-nav-cover':table==3}" *ngIf="billInfo.balance">财务结算信息</li>
+                    <li (click)="tableSwitch(4)"  [ngClass]="{'top-menu':true,'documentPublic-nav-cover':table==4}">审批流程</li>		
+                 </ul>          
+      
+                <a class="print-btn rt" target="_blank" href="{printUrl(0,id)}">单据打印</a> 
+                <p *ngIf="billInfo.billApprovalStatus <12"  style="margin-right:10px;line-height:33px;font-size:12px;" class="quick-btn rt mainColor" target="_blank">快速沟通</p>      
+                <a *ngIf="ifApply" class="print-btn role-btn shenpi-btn rt">
+                    <span *ngIf="billInfo.billApprovalStatus ==1 || billInfo.billApprovalStatus ==2">单据审批</span>
+                    <span *ngIf="billInfo.billApprovalStatus ==5">单据签收</span>
+                    <span *ngIf="billInfo.billApprovalStatus ==6 || billInfo.billApprovalStatus ==8">单据结算</span>
+                </a>
+            </div>
+            
+            <div class="documentPublic-box-footer">
+                <div class="tb-menu" *ngIf="show[0]">
+                    <ul>
+                        <li>
+                            <div>
+                                <p>单据编号：</p>
+                                <input class="orderNo" type="text" [value]="billInfo.orderNo" readonly style="color: rgb(203, 17, 17); border: none; width: 270px;">
+                            </div>
+                            <div>
+                                <div class="status">
+                                    <p>当前状态：</p><em>{{billInfo.billApprovalStatus | listAuditStatus}}</em>
+                                </div>
+                            </div>
+                    
+                        </li>
+                        
+                        <li>
+                            <div>
+                                <p>提交人：</p>
+                                <input class="username" type="text" [value]="billInfo.proposer" readonly></div>
+                        </li>
+                      
+                        <li>
+                            <div>
+                                <p>同行人：</p>
+                                <input class="toggername" type="text" [value]="person.name" readonly style="width:165px;padding-right:31px;">
+                                <img src="../../assets/images/search_bglan.png" class="searchBgImg">
+                            </div>
+                            <div>
+                                <p>同行人数：</p>
+                                <input class="toggernum" type="text" [value]="person.number" readonly></div>
+                        </li>
+                      
+                        <li>
+                            <div>
+                                <p>填制时间：</p>
+                                <input class="createOn" type="text" [value]="billInfo.createdOn" readonly></div>
+                            <div>
+                                <p>提交时间：</p>
+                                <input class="updateOn" type="text" [value]="billInfo.updatedOn" readonly></div>
+                            </li>
+                    </ul>
+                   
+                    <div class="documentPublic-box-footerHeader">申请信息</div>
+                    <ul>
+                        <li>
+                            <div>
+                                <p>申请人</p>
+                                <input class="username" type="text" [value]="billInfo.proposer" readonly></div>
+                            <div>
+                                <p>申请部门</p>
+                               <input class="applyDepart" type="text" [value]="billInfo.department" readonly></div> 
+                        </li>
+                        
+                        <li>
+                            <div>
+                                <p>审批方式</p>
+                                <input class="approvalType" type="text" [value]="billInfo.approvalType == 1 ? '部门审批':'项目审批'" readonly></div>
+                            </li>
+                        <li style="height: auto;overflow: hidden;">
+                            <div class="documentPublic-inputAllwidth" style="width:100%">
+                                <p>事由</p>
+                                <div class="remark" title="billInfo.remark" style="overflow: hidden;">{{billInfo.remark}}</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="documentPublic-box-footerHeader">入账信息</div>
+                    <ul>
+                        <li>
+                            <div>
+                                <p>记账部门</p>
+                                <input class="tallyDepart" type="text" [value]="billInfo.tallyDepartName" readonly></div>
+                            <div>
+                                <p>记账项目</p>
+                                <input class="tallyProject" type="text" [value]="billInfo.tallyProjectName==0 ? '':billInfo.tallyProjectName" readonly></div>
+                        </li>
+                    </ul>
+                  
+                    <div class="documentPublic-box-footerHeader">出差路线</div>
+                  
+              
+                   <!--出差路线 start-->
+                   <div class="havetoBox" *ngFor="let item of billInfo.travelBookbeans;let i=index">
+                      <div class="haveto">
+                        <div class="chuln">
+                          <div class="luxi">
+                              <code class="coc1"></code>
+                              <code class="coc2"></code>
+                              <div class="travelNum">行程<span>{{i+1}}</span></div>
+                              <img  src="../../assets/images/guanbi.png" alt="" class="deleteTrip">
+                              <ul class="leftUl" style="float:left">
+                                <li>出发日期<span>*</span><input type="text" name="startTime"  readonly [value]="item.startTime.substring(0,10)" placeholder="出发日期"></li>
+                                <li style="position:relative">出发城市<span>*</span>
+                                  <input type="text" name="startCity" [value]="item.startCity" readonly placeholder="出发城市">
+                                </li>
+                              </ul>
+                              <ul class="rightUl" style="float:right">
+                                <li>到达日期<span>*</span><input type="text" name="endTime" [value]="item.endTime.substring(0,10)"  readonly placeholder="到达日期"></li>
+                                <li style="position:relative">到达城市<span>*</span>
+                                  <input type="text" name="toCity"  [value]="item.toCity" readonly placeholder="到达城市">
+                                </li>
+                              </ul>
+                              <img class="changeTwo" src="../../assets/images/xingcheng.png" alt="">
+                              <div class="travelStyle">
+                                <span>出行方式</span>
+                                <select name="tbType" [disabled]="true" [(ngModel)]="item.tbType">
+                                    <option value="0">无</option>
+                                    <option value="1">火车</option>
+                                    <option value="2">飞机</option>
+                                </select>
+                                <label class="hodel">
+                                  <span *ngIf="item.hotelBooking">需住宿</span>
+                                </label>
+                              </div>
+                          </div>
+                          <p class="beiz"><b>备注</b>：
+                              <input type="text" placeholder="请输入备注" name="remark" readonly class="curemark" [value]="item.remark"/> 
+                              <a *ngIf="ifOrderList[i] && item.hotelBooking" class="dingbtn" href="{pathUrls(1)}/trave/xiecheng?info={value.id},true,hotel1" target="_blank">订酒店</a>
+                              <a *ngIf="ifOrderList[i] && item.tbType == 1" class="dingbtn" href="{pathUrls(1)}/trave/xiecheng?info={value.id},false,train1" target="_blank">订火车票</a>
+                              <a *ngIf="ifOrderList[i] && item.tbType == 2" class="dingbtn" href="{pathUrls(1)}/trave/xiecheng?info={value.id},false,fligh1" target="_blank">订机票</a>
+                          </p>    
+                        </div>
+                      </div>
+                
+                      <!--票列表start-->
+                      <div *ngFor="let values of item.ticketInfoBean">
+                          <div  class="dind" *ngIf="values.ticketType ==1">
+                             <p>{{values.orderName}}&nbsp;&nbsp;|&nbsp;&nbsp;{{values.levelName}}<code>￥{{values.amount}}</code></p>
+                              <p><span>{{values.startPortName}}</span><span>{{values.endPortName}}</span></p>
+                              <p><span>{{values.startDate.substring(0,10)}}</span><span  style="margin-left:115px">{{values.endDate.substring(0,10)}}</span></p>
+                              <img src="../../assets/images/huoche.png">
+                              <span class="gezhi">{{values.payType == 0 ?'企业支付':'个人支付'}}</span>
+                              <span class="yichu">{{values.status == 0 ?'已支付' : (values.status == 1 ? '已出行':'已报销')}}</span>
+                          </div>
+                         <div  class="dind" *ngIf="values.ticketType ==2">
+                              <p>{{values.orderName}}&nbsp;&nbsp;|&nbsp;&nbsp;{{values.levelName}}&nbsp;&nbsp;|&nbsp;&nbsp;{{values.discount}}折<code>￥{{values.amount}}</code></p>
+                              <p><span>{{values.city}}</span><span>{{values.toCity}}</span></p>
+                              <p><span>{{values.startDate.substring(0,10)}}</span><span style="margin-left:115px">{{values.endDate.substring(0,10)}}</span></p>
+                              <img src="../../assets/images/feiji.png">
+                              <span class="gezhi">{{values.payType == 0 ?'企业支付':'个人支付'}}</span>
+                              <span class="yichu">{{values.status == 0 ?'已支付' : (values.status == 1 ? '已出行':'已报销')}}</span>
+                          </div>
+                          <div class="dind" *ngIf="values.ticketType ==3">
+                              <p>{{values.roomName}}&nbsp;&nbsp;{{values.roomNum}}间&nbsp;&nbsp;&nbsp;{{values.breakfast>0 ? '有早':'无早'}}<code>￥{{values.amount}}</code></p>
+                              <p><span>{{values.orderName}}</span><span></span></p>
+                              <p><code>{{values.startDate.substring(0,10)}}入住</code></p>
+                              <span class="gezhi">{{values.payType == 0 ?'企业支付':'个人支付'}}</span>
+                              <span class="yichu">{{values.status == 0 ?'已支付' : (values.status == 1 ? '已入住':'已报销')}}</span>
+                          </div>
+                        </div>
+                      <!--票列表end-->
+                    </div>
+                    <!--出差路线 end-->
+                    <div class="documentPublic-box-footerHeader">出差申请费用预算</div>
+                    <ul style="margin-bottom: 60px;" class="tripexp-ul">
+                         <li *ngFor="let item of billInfo.formatCostBudgets">
+                              <div>
+                                  <p>费用项目：</p>
+                                  <input type="text" [value]="item.budgetTypes[0].costBudgetName" readonly="readonly">
+                              </div>
+                              <div>
+                                  <p>金额：</p>
+                                  <input type="text" value="{{item.code}}   {{item.amount}}" readonly="readonly">
+                              </div>
+                            </li>              
+                    </ul>
+                     <!-- 如果已出行  就可以去报销 （以后加字段）-->
+                    <p *ngIf="billInfo.billExpenseStatus == 1" class="gobut2"   style="margin-bottom:20px">去报销</p>
+                </div>
+                  <!--现金预支信息-->
+                <div class="tb-menu" *ngIf="show[1]">
+                    
+                    <ul>
+                        <li>
+                            <div>
+                                <p>单据编号：</p>
+                                <input class="xjyorderNo" type="text" [value]="cashAdvanceBillData.orderNo" readonly="readonly" style="color: rgb(203, 17, 17); border: none; width: 260px;">
+                              </div>
+                        </li>
+                    </ul>
+                    <div class="documentPublic-box-footerHeader">预支信息</div>
+               
+                    <ul>
+                        <li>
+                            <div>
+                                <p>支付方式</p>
+                                <input class="payType" type="text" [value]="cashAdvanceBillData.payType | payType" readonly="readonly"></div> 
+                            <div>
+                                <p>结算币种：</p>
+                                <input class="currencySettleType" type="text" [value]="cashAdvanceBillData.currencySettleType == 0 ? '折合本币结算':'单据币种结算'" readonly="readonly"></div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>最终收款人</p>
+                                <input class="receiver" type="text" [value]="cashAdvanceBillData.receiver" readonly="readonly"></div>
+                            <div>
+                                <p>银行卡号：</p>
+                                <input class="bankNo" type="text" [value]="cashAdvanceBillData.bankNo" readonly="readonly"></div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>开户银行：</p>
+                                <input class="bankName" type="text" title="{{cashAdvanceBillData.bankName}}" [value]="cashAdvanceBillData.bankName" readonly="readonly"></div>
+                        </li>
+                      </ul>
+                   
+                    <div class="documentPublic-box-footerHeader">现金预支明细清单</div>
+                    <div class="documentPublic-box-footerList">
+                            <div class="dbody">
+                                    <table class="report-tb1" border="1">
+                                            <thead>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>币种</td>
+                                                    <td>金额</td>
+                                                    <td>可核销金额</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                   <tr class="check-detail" *ngFor="let item of billInfo.cashAdvanceInfos[billInfo.cashAdvanceBillId];let i=index">
+                                                           <td>{{i+1}}</td>
+                                                           <td>{{item.currency}}</td>
+                                                           <td>{{item.amount}}</td>
+                                                           <td>{{item.tempAmount}}</td>
+                                                   </tr>
+                                            </tbody>
+                                    </table>
+                                
+                            </div>
+                    </div>
+                </div>
+                <!--财务签收信息-->
+                <div  class="tb-menu" *ngIf="show[2]">
+                    <div class="documentPublic-box-footerHeader">财务签收信息</div>
+                    <ul>
+                        
+                        <li>
+                            <div>
+                                <p>审核人：</p>
+                                <input type="text" [value]="billInfo.sign.executor.nickname" readonly="readonly" class="shengUser">
+                            </div>
+                            <div>
+                                <p>单据到达时间：</p>
+                                <input type="text" [value]="billInfo.sign.createdOn" readonly="readonly" class="reiveTime">
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>支付方式：</p>
+                                <input class="payType" type="text" [value]="cashAdvanceBillData.payType | payType" readonly="readonly"></div>
+                            <div>
+                                <p>结算币种：</p>
+                                <input class="currencySettleType" type="text" [value]="cashAdvanceBillData.currencySettleType == 0 ? '折合本币结算':'单据币种结算'" readonly="readonly" ></div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>签收审核时间：</p>
+                                <input type="text" [value]="billInfo.sign.updatedOn" readonly="readonly" class="qianTime"></div>
+                        </li>
+                        <li>
+                            <div class="documentPublic-inputAllwidth" style="margin-bottom: 60px;width:100%;height:auto">
+                                <p>审核意见：</p>
+                                <textarea readonly="readonly" class="shMess">{{billInfo.sign.approval}}</textarea>
+                             </div>
+                            </li>
+                    </ul>
+                </div>
+                <!--财务结算信息-->
+                <div class="tb-menu" *ngIf="show[3]">
+                    <div class="documentPublic-box-footerHeader" >财务结算信息</div>
+                    <ul>
+                        <li>
+                            <div>
+                                <p>结算支付人：</p>
+                                <input type="text" [value]="billInfo.balance.executor.nickname" readonly="readonly" class="jsusername"></div>
+                            <div>
+                                <p>单据到达时间：</p>
+                                <input type="text" [value]="billInfo.balance.createdOn" readonly="readonly" class="jsdatime"></div>
+                        </li>
+                        <li>
+                            <div>
+                                <p>结算支付时间：</p>
+                                <input type="text" [value]="billInfo.balance.updatedOn" readonly="readonly" class="jszftime"></div>
+                            <div>
+                                <p>结算意见：</p>
+                                <input type="text" [value]="billInfo.balance.approval" readonly="readonly" class="jszfshengMessage"></div>
+                        </li>
+                    </ul>
+                    <div class="documentPublic-box-footerHeader zhifupichiinfo">财务支付信息</div>
+                    <div class="financialSettlement-list zhifupichiinfo">
+                        <div class="dbody" style="overflow-x:auto">
+                                <table class="report-tb1" border="1">
+                                        <thead>
+                                            <tr>
+                                                <td></td>
+                                                <td>支付方式</td>
+                                                <td>结算币种</td>
+                                                <td>最终收款人</td>
+                                                <td>开户银行</td>
+                                                <td>卡号</td>
+                                                <td>支付金额</td>
+                                                <td>支付时间</td>
+                                                <td>支付人</td>
+                                                <td>支付状态</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let item of billInfo.batchs;let i=index">
+                                            <tr><td colspan="11">支付批次号：{{item.batchId}} 支付金额：{{item.currency}} {{item.amounts.toFixed(2)}}</td></tr>
+                                            <tr class="check-detail">
+                                                    <td>{{i+1}}</td>
+                                                    <td>{{billInfo.payType | payType}}</td>
+                                                    <td>{{item.currencySettleType == 0 ? '折合本币结算':'单据币种结算'}}</td>
+                                                    <td>{{billInfo.receiver}}</td>
+                                                    <td>{{billInfo.cashAdvanceBill ? billInfo.cashAdvanceBill.bankName : ''}}</td>
+                                                    <td>{{billInfo.cashAdvanceBill ? billInfo.cashAdvanceBill.bankNo : ''}}</td>
+                                                    <td>{{item.currency}} {{item.amounts.toFixed(2)}}</td>
+                                                    <td>{{item.updatedOn}}</td>
+                                                    <td>{{item.bbs[0].status == 0 ? '':item.user.nickname}}</td>
+                                                    <td>{{item.bbs[0].status == 0 ? '待财务支付':'财务已支付'}}</td>
+                                            </tr>
+                                        </tbody>
+                                </table>            
+                        </div>
+                    </div>
+                </div>
+                <!--审批流程-->	
+                <div  class="tb-menu" *ngIf="show[4]">
+                    <ul>
+                        <li>
+                            
+                            <div>
+                                <p>单据编号：</p>
+                                <input class="orderNo" type="text" [value]="billInfo.orderNo" readonly="readonly" style="color: rgb(203, 17, 17); border: none; width: 260px;" [title]="billInfo.orderNo">
+                            </div>
+                            <div class="status">
+                                    <p>当前状态：</p><em style="line-height:34px">{{billInfo.billApprovalStatus | listAuditStatus}}</em>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="documentPublic-box-footerHeader">单据审批信息</div>
+                    <div class="documentPublic-box-approval">
+                        <ul>
+                          <li>
+                                <b></b>
+                                <img src="../../assets/images/ogrin.png">
+                                <span>
+                                    <img src="../../assets/images/Slice17.png"></span>
+                                <div>
+                                    <img alt="头像" [src]="billInfo.user.avatarSmall">
+                                    <div>
+                                        <div>
+                                          
+                                            <h4 [title]="billInfo.user.nickname">{{billInfo.user.nickname}}</h4>
+                                        </div>
+                                        <span>
+                                            <em style="color: #7AD752;">发起申请</em>
+                                            <time>{{billInfo.createdOn}}</time>
+                                          </span>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li *ngFor="let item of billInfo.appover">
+                                 <b></b>
+                                <img src="../../assets/images/{{ {'conclusion':item.conclusion,'type':1} | approveFlow}}.png">
+                                  <span>
+                                      <img src="../../assets/images/Slice17.png">
+                                   </span>
+                                  <div>
+                                      <img alt="头像" [src]="item.executor.avatarSmall">
+                                    
+                                      <div>
+                                          <div>
+                                              <h4 [title]="item.executor.nickname">{{item.executor.nickname}}</h4>
+                                              <i [title]="item.executor.positionName">{{item.executor.positionName}}</i>
+                                              <span *ngIf="(item.conclusion == 1 || item.conclusion == 2) && ifOpenapply">权限：{{item.amountLimit}}</span>		                                    
+                                            </div>
+                                           <span>
+                                              <em>{{ {'conclusion':item.conclusion,'type':2} | approveFlow }}</em> 
+                                              <time>{{item.updatedOn}}</time>                              
+                                           </span>
+                                        </div>
+                                        <p *ngIf="item.conclusion !=0 && item.conclusion !=3" [title]="item.approval" style="height:25px;">理由：{{item.approval}}</p>
+                                        <p *ngIf="item.conclusion !=0 && item.conclusion ==3" [title]="item.approval" style="height:25px;">{{item.approval}}</p>	                            
+                                  </div>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                </div>
+  
+          </div>
+             
+             
+ 
+      
+            
+              <!--查看同行人-->
+            <!--
+            <div class="function-able" id="seeTogger" style="display: none;">
+                <div class="mate-colleague-list seeTogger">
+                      <p style="padding-left:20px;width:auto;">同行人<img class="seeclose" src="../../assets/images/close_box.png" title="关闭" ></p>
+                      <ul>
+                         {each passengerBean}
+                          <li class="options" src="{$value.avatar}" name="{$value.passengerName}" uid="{$value.userId}">
+                              <p></p>
+                      <p><img style="border-radius:50%;" src="{$value.avatar}"></p>
+                      <p>{$value.passengerName}</p>
+                    </li>
+                    {/each}
+                      </ul>
+                </div>
+            </div>
+          -->
+            <!-- end -->
+            <!-- 单点登录跳转携程 -->
+            <!--
+          <form action="https://www.corporatetravel.ctrip.com/corpservice/authorize/login" method="post" id="SSOLoginForm1" style="display:inline" >                                                                               			          
+               <input type="hidden" value="" id="appKey" name="AppKey">        
+              <input type="hidden" value="" id="token" name="Ticket">
+              <input type="hidden" value="-1" id="TA" name="TA">
+              <input type="hidden" value="http://ct.ctrip.com" id="Backurl" name="Backurl">            
+              <input type="hidden" name="EmployeeID" id="userId" value="{user.id}">         
+          </form> -->   
+        </div>
+        <div *ngIf="billInfo.orderNo == undefine" class="tpl-loading"></div>
+</div>

@@ -1,0 +1,116 @@
+.strokeFormulation-button-dispose{
+	right: 30px;
+}
+.strokeFormulation-planeUl li > p:nth-child(1),.strokeFormulation-planeHeader > p:nth-child(1){
+	width: 5%;
+}
+.strokeFormulation-planeUl li > p:nth-child(2),.strokeFormulation-planeHeader > p:nth-child(2){
+	width: 25%;
+}
+.strokeFormulation-planeUl li > p:nth-child(3),.strokeFormulation-planeHeader > p:nth-child(3){
+	width: 8%;
+}
+.strokeFormulation-planeUl li > p:nth-child(4),.strokeFormulation-planeHeader > p:nth-child(4){
+	width: 23%;
+}
+.strokeFormulation-planeUl li > p:nth-child(5),.strokeFormulation-planeHeader > p:nth-child(5){
+	width: 9%;
+}
+.strokeFormulation-planeUl li > p:nth-child(6),.strokeFormulation-planeHeader > p:nth-child(6){
+	width: 9%;
+}
+.strokeFormulation-planeUl li > p:nth-child(7),.strokeFormulation-planeHeader > p:nth-child(7){
+	width: 12%;
+}
+.strokeFormulation-planeUl li > p:nth-child(8),.strokeFormulation-planeHeader > p:nth-child(8){
+	width: 9%;
+}
+/* .strokeFormulation-planeUl li > p:nth-child(9),.strokeFormulation-planeHeader > p:nth-child(9){
+	width: 13%;
+}
+  */
+.strokeFormulation-hotelUl li > p:nth-child(4),.strokeFormulation-hotelHeader > p:nth-child(4){
+	width: 8%;
+}
+.strokeFormulation-hotelUl li > p:nth-child(5),.strokeFormulation-hotelHeader > p:nth-child(5){
+	width: 12%;
+}
+.strokeFormulation-hotelUl li > p:nth-child(6),.strokeFormulation-hotelHeader > p:nth-child(6){
+	width: 12%;
+}
+.strokeFormulation-hotelUl li > p:nth-child(4),.strokeFormulation-hotelHeader > p:nth-child(4){
+	width: 9%;
+}
+.strokeFormulation-hotelUl li > p:nth-child(5),.strokeFormulation-hotelHeader > p:nth-child(5){
+	width: 16%;
+}
+.strokeFormulation-hotelUl li > p:nth-child(6),.strokeFormulation-hotelHeader > p:nth-child(6){
+	width: 16%;
+}
+.strokeFormulation-trainUl li > p:nth-child(4),.strokeFormulation-trainHeader > p:nth-child(4){
+	width: 21%;
+}
+.strokeFormulation-trainUl li > p:nth-child(5),.strokeFormulation-trainHeader > p:nth-child(5){
+	width: 15%;
+}
+.strokeFormulation-trainUl li > p:nth-child(6),.strokeFormulation-trainHeader > p:nth-child(6){
+	width: 15%;
+}
+.strokeFormulation-trainUl li > p:nth-child(7),.strokeFormulation-trainHeader > p:nth-child(7){
+	width: 11%;
+}
+.reservationProcesse-listUl > li > p:nth-child(3) img{
+	width: auto;
+	height: auto;
+	display: block;
+	margin:6px auto;
+}
+.CityChooseAlert{
+	position: absolute;
+	width: 420px;
+	height: 618px;
+	border-radius: 4px;
+	background: #fff;
+	overflow: hidden;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);	
+}
+.CityListLook{
+	width: 400px;
+	margin: auto;
+	height: 408px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.airIMG{
+	width: 32px;  
+	height: 32px;  
+}
+.airlineListLook{
+    width: 400px;
+    margin: auto;
+    height: 408px;
+    overflow-y: auto;
+	overflow-x: hidden;
+}
+.airlineChooseAlert{
+    position: absolute;
+    width: 420px;
+    height: 602px;
+    border-radius: 4px;
+    background: #fff;
+    overflow: hidden;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+
+}

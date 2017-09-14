@@ -1,0 +1,258 @@
+.travelBook-right{
+	position: relative;
+    margin-left: 361px;
+    background: #fff;
+    margin-top: 70px;
+	overflow: auto;
+}
+.travelBook-right > div {
+    width: 100%;
+    height: auto;
+}
+.MyandAll{
+	height: 88px;
+	margin-top: 32px;
+	margin-left: 46px;
+}
+.mine-CheckIn, .all-CheckIn{
+	float: left;
+	width: 160px;
+	height: 88px;
+	cursor: pointer;
+}
+.mine-CheckIn{
+	background-color: #37C1F7;
+    border-radius: 8px;
+}
+.mine-CheckIn img{
+    width: initial;
+   margin: 22px 0 0 10px;
+}
+.mine-CheckIn span{
+	float: right;
+    width:102px;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 19px;
+    line-height: 50px;
+}
+.all-CheckIn{
+	background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #31c1f7;
+}
+.all-CheckIn img{
+    width: initial;
+   margin: 22px 0 0 10px;
+}
+.all-CheckIn span{
+	float: right;
+    width: 102px;
+    font-size: 18px;
+    color: #37C1F7;
+    margin-top: 19px;
+     line-height: 50px;
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.MyChooseList {
+    margin:20px 40px;
+}
+.MyChooseList > div {
+    position: relative;
+    float: left;
+    width: 208px;
+    height: 100%;
+}
+.MyChooseList > div input {
+    margin:0;
+    padding: 0;
+    margin-left:10px;
+    width: 145px;
+    height: 30px;
+    border: 1px solid #D2D2D2;
+    border-radius: 4px;
+    cursor: pointer;
+    padding-left: 8px;
+    color: #6C6C6C;
+    font-size: 14px;
+    display: inline-block
+}
+.MyChooseList > div .select{ 
+    margin:0;
+    padding: 0;
+    margin-left:10px;
+    width: 145px;
+    height: 30px;
+    font-size: 14px;
+    display: inline-block;
+    padding-left: 8px;
+} 
+.MyChooseList > div img {
+    position: absolute;
+    right: 25px;
+    top: 14px;
+    width: 10px;
+    height: 5px;
+}
+.MyChooseList > div:nth-child(3) {
+    width: 324px;
+}
+.MyChooseList > div:nth-child(3) p:first-child {
+    margin-left: 0px;
+}
+.MyChooseList > div:nth-child(3) p {
+    float: left;
+    height: 100%;
+    line-height: 32px;
+}
+.MyChooseList > div:nth-child(3) p span {
+    color: #37C1F7;
+}
+.w100{width: 60px !important;font-size: 14px;}
+.FunIconList{float: right;margin-right: 45px;height:45px;}
+.ft14{font-size: 14px}
+/**/
+.AllStatTable, .AllStatTableDel { margin-left:40px;margin-right:40px;border-left: 1px solid #D2D2D2;}
+.AllStatTable > div, .AllStatTableDel > div {
+    width: 100%;
+    height: 42px;
+    border: 1px solid #D2D2D2;
+    border-left: none;
+    background: #F5F6FA;
+    box-sizing: border-box;
+}
+.AllStatTable > div p:nth-child(1), .AllStatTable ul li p:nth-child(1) {
+    border-left: none;
+    width: 11%;
+}
+.AllStatTable > div p, .AllStatTable ul li p, .AllStatTableDel > div p, .AllStatTableDel ul li p {
+    float: left;
+    height: 100%;
+    border-left: 1px solid #D2D2D2;
+    text-align: center;
+    line-height: 42px;
+    font-size: 14px;
+    color: #333333;
+}
+.AllStatTable ul, .AllStatTableDel ul {
+    overflow-y: auto;
+    border-bottom: 1px solid #D2D2D2;
+    position: relative;
+}
+.AllStatTable ul li, .AllStatTableDel ul li {
+    display: block;
+    width: 100%;
+    height: 42px;
+    border: 1px solid #D2D2D2;
+    border-top: none;
+    border-left: none;
+    box-sizing: border-box;
+}
+
+.AllStatTable ul li p, .AllStatTableDel ul li p {
+    font-size: 12px;
+    color: #666666;
+}
+.AllStatTable > div p:nth-child(2), .AllStatTable ul li p:nth-child(2) {
+    width: 14%;
+}
+.AllStatTable > div p:nth-child(3), .AllStatTable ul li p:nth-child(3) {
+    width: 13%;
+    overflow: hidden;
+}
+.AllStatTable > div p:nth-child(4), .AllStatTable ul li p:nth-child(4) {
+    width: 10%;
+}
+.AllStatTable > div p:nth-child(5), .AllStatTable ul li p:nth-child(5) {
+    width: 10%;
+}
+.AllStatTable > div p:nth-child(6), .AllStatTable ul li p:nth-child(6) {
+    width: 10%;
+}
+.AllStatTable > div p:nth-child(7), .AllStatTable ul li p:nth-child(8) {
+    width: 10%;
+}
+.AllStatTable > div p:nth-child(8), .AllStatTable ul li p:nth-child(7) {
+    width: 10%;
+}
+.AllStatTable > div p:nth-child(9), .AllStatTable ul li p:nth-child(9) {
+    width: 10%;
+}
+.newTableDet {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #d2d2d2;
+    position: relative;
+    margin-top: 20px;
+}
+.newTableDet #newLeft {
+    width: 30%;
+    float: left;
+    overflow: hidden;
+}
+#newLeft .headLeft, #newRight .headRight {
+    height: 40px;
+    border-bottom: 1px solid #d2d2d2;
+}
+#newLeft p, #newRight p, #newLeft .resultLeft p span {
+    display: block;
+    width: 50%;
+    float: left;
+    border-right: 1px solid #d2d2d2;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#newLeft .resultLeft p, #newRight .resultRight p {
+    width: 100%;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.newTableDet #newRight {
+    float: left;
+    width: 70%;
+    float: left;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+#newRight .headRight, #newRight .resultRight {
+    width: 2670px;
+}
+
+.AllStatDel {
+    width: 80px !important;
+}
+.AllStatDel span {
+    display: block;
+    line-height: 16px;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+#newRight .resultRight p span {
+    float: left;
+    diaplay: block;
+    height: 36px;
+    padding-top: 4px;
+    border-right: 1px solid #d2d2d2;
+    line-height: 16px;
+    font-size: 12px;
+    color: #666;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+

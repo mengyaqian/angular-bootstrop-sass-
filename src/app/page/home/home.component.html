@@ -1,0 +1,177 @@
+<div id='home'>
+	<div class="saas-home-Main" style="height: 732px;">
+		<div class="saas-home-left">
+			<div>
+				<p style="line-height:49px">最新消息</p>
+				<!-- 最新消息显示公告的内容 by mq 2017-01-06 -->
+				<p onclick="refreshNotice();">
+					<img src="../../../assets/images/refresh.png"> <span class="hover-break" i18n="index.refresh" style="display: none; opacity: 0.00885637;">刷新</span>
+				</p>
+				
+			</div>
+			<ul id="saas-home-left-ul" class="ps-container" style="height: 682px;"><p id="bk-left-img"><img  class="noMessage" src="../../../assets/images/11.png"></p></ul>
+		</div>
+		<div class="saas-home-center">
+			<div>
+				<div>
+					<p style="line-height:49px">业务消息</p>
+					<p>
+						<img src="../../../assets/images/refresh.png" tittle="刷新">
+					</p>
+				</div>
+				<ul id="saas-home-center-ul" class="ps-container" style="height: 241px;">
+					<div>
+						<li style="width: 582px;">
+							<div>
+								<img src="../../../assets/images/toDoBusiness.png">
+							</div>
+							<div>
+								<p style="width: 402px;">待办</p>
+								<p style="width: 492px;" *ngIf='message.msgOne'>{{message.msgOne.content}}</p>
+								<p style="width: 492px;" *ngIf='!message.msgOne'>暂无消息</p>
+							</div>
+							<div></div>
+						</li>
+					</div>
+					<div>
+						<li style="width: 582px;">
+							<div>
+								<img src="../../../assets/images/approveResult.png">
+							</div>
+							<div>
+								<p style="width: 402px;">提醒</p>
+								<p style="width: 492px;" *ngIf='message.msgTwo'>{{message.msgTwo.title}}：{{message.msgTwo.summary}}</p>
+								<p style="width: 492px;" *ngIf='!message.msgTwo'>暂无消息</p>
+							</div>
+							<div></div>
+						</li>
+					</div>
+					<div>
+						<li style="width: 582px;">
+							<div>
+								<img src="../../../assets/images/early-warning.png">
+							</div>
+							<div>
+								<p style="width: 402px;">预警</p>
+								<p style="width: 492px;" *ngIf='message.msgThree'>{{message.msgThree.content}}</p>
+								<p style="width: 492px;" *ngIf='!message.msgThree'>暂无消息</p>
+							</div>
+							<div></div>
+						</li>
+					</div>
+					<p class="hide" id="bk-center-img" style="display: none;">
+						<img src="../../../assets/images/11.png">
+					</p>
+				<div class="ps-scrollbar-x-rail" style="width: 615px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 213px; display: none; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></ul>
+			</div>
+
+			<div id="center-bottom">
+				<div id="time-header">
+					<p>日程</p>
+					<p>
+						<img src="../../../assets/images/returntd.png" title="返回今日" >
+					</p>
+				</div>
+				<div class="home-data-box" style="height: 365px;">
+						<div class="home-data-box" style="height: 367px;">
+							<div class="date-top" style="height: 45px;">
+								<div>
+									<p style="line-height: 45px;">
+										<img src="../../../assets/images/left.png">
+									</p>
+									<p id="years" style="line-height: 45px;">2017年7月</p>
+									<p style="line-height: 45px;">
+										<img src="../../../assets/images/right.png">
+									</p>
+								</div>
+							</div>
+							<app-date [scheduleStr]='scheduleData'></app-date>
+						</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="saas-home-right">
+				<div>
+					<div style="height: 103px;">
+						<p id="right-time" style="line-height: 76.22px; height: 76.22px;">
+							{{timeObj.hour<10?'0'+timeObj.hour:timeObj.hour}}:{{timeObj.minute<10?'0'+timeObj.minute:timeObj.minute}}:{{timeObj.second<10?'0'+timeObj.second:timeObj.second}}
+						</p>
+						<p style="height: 26.78px;">
+							<span id="right-time-2">{{date}}</span> <span id="right-time-3">{{day}}</span>
+						</p>
+					</div>
+					<div id='sign'>
+						<img src="../../../assets/images/click_down.png">
+					</div>
+				</div>
+
+				<div>
+				<div class="index-water">
+					<div class="index-water-header">
+							<p [ngClass]="{'index-water-hover':expenditureState==1}"  (click)='expenditureState=1'>我的开支流水分布</p>
+							<p [ngClass]="{'index-water-hover':expenditureState==2}" (click)='expenditureState=2'>我的开支流水曲线</p>
+					</div>
+
+					<div class="index-water-footer">
+						<!--第一块-->
+						<div id="index-water-first" class="ps-container" style="height: 520.56px;">
+							<div [hidden]='expenditureState==2'>
+								<div class="water-firstDate">
+									<div>
+										<p >统计时间：</p>
+										<div id="water-firstDate-start">
+											<input type="text" appDateDirective  (selected)="dateSelected($event,'lastDate')" [(ngModel)]='lastDate' readonly/>
+											<img src="../../../assets/images/down-list.png" >
+										</div>
+										<span>~</span>
+										<div id="water-firstDate-end" >
+											<input type="text" appDateDirective  (selected)="dateSelected($event,'date')" [(ngModel)]='date' readonly />
+											<img src="../../../assets/images/down-list.png">
+										</div>
+									</div>
+								</div>
+								
+								<div id="bill-nomore" style="display: none;margin-top:30%;" class="staff-employee-center">
+									<img src="../../../assets/images/nocontent.png">
+									<p>暂时没有相关记录信息</p>
+								</div>
+								<div class="index-firstChart">
+									<div id="main-1" style="width: 100%;height:240px;"  *ngIf='expenditureState==1'>
+											<canvas baseChart height="180px" *ngIf='doughnutChartData.length!=0' [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+									</div>
+									<p class="index-firstChart-mon">（以本币显示）</p>
+								</div>
+							</div>
+
+						
+						<!--第二块-->
+						<div [hidden]='expenditureState==1'>
+							<div class="water-firstDate index-secondDate">
+									<div>
+									<p>统计时间：</p>
+									<div id="water-secondtDate-start">
+										<input type="text" appDateDirective (selected)="dateSelected($event,'mybillDate')" [(ngModel)]='mybillDate' readonly="readonly">
+										<img src="../../../assets/images/down-list.png">
+									</div>
+								</div>
+							</div>
+							<div class="index-secondChart">
+							<div id="main-2" style="width: 100%;height:380px;" *ngIf='expenditureState==2'>
+								<canvas baseChart height="200"  *ngIf='lineChartLabels.length!=0' [datasets]="lineChartData" [labels]="lineChartLabels"  [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+								</canvas>
+
+							</div>
+							</div>
+							<div class="index-second-footer"><p>日期</p></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+
+	</div>
+</div>
+
+

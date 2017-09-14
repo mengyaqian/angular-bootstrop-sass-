@@ -1,0 +1,112 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="tabs">
+			<p  [class]="tableCurreny == 1 ? 'active':''" (click)="tabChange(1)">请假汇总统计</p>
+			<p  [class]="tableCurreny == 2 ? 'active':''" (click)="tabChange(2)">请假明细统计表</p>
+		</div>
+		<div class="mg-cont">
+			<span>日期从</span>
+			<input type="text" class="datetime mydatetime"  [(ngModel)]="startdate" appDateDirective (selected)="dateSelected($event,'begin')" readonly>至
+			<input type="text" class="datetime mydatetime"  [(ngModel)]="enddate" appDateDirective (selected)="dateSelected($event,'end')" readonly>
+			<div class="nameDiv" [hidden]="!isShow">
+				<span class="pl30">姓名</span>
+				<input class="w120" name="username" [(ngModel)]="username" type="text">
+			</div>
+			<div class="nameDiv" [hidden]="!isShow">
+				<span class="pl30">部门</span>
+				<select [(ngModel)]="departId" class="w120 myselect">
+					<option value="-1">全部</option>
+					<option value="0">未分组</option>
+					<option *ngFor="let i of departList" [value]="i.departId">{{i.name}}</option>
+				</select>
+			</div>
+			<div class="btnBox">
+				<div  class="btn btn-primary" (click)="search()">查询</div>
+				<div [hidden]="!isShow" class="btn btn-primary" (click)="reset()">重置</div>
+				<div  class="btn btn-primary" (click)="importCon()" >导出</div>
+			</div>	
+		</div>
+		<!---请假汇总-->
+		<div class="dbody" *ngIf="tableCurreny ==1">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>员工姓名</td>
+							<td>手机号码</td>
+							<td>所属部门</td>
+							<td>职位</td>
+							<td>职级</td>
+							<td>事假</td>
+							<td>病假</td>
+							<td>年假</td>
+							<td>调休</td>
+							<td>婚假</td>
+							<td>产假</td>
+							<td>陪产假</td>
+							<td>丧假</td>
+							<td>路途假</td>
+							<td>其他</td>
+						</tr>
+					</thead>
+					<tbody>
+							<tr class="check-detail" *ngFor="let item of listData">
+									<td title="{{item.userName}}" class="firstTd" (click)="seeDetail(item.userName,item.departmentId,item.department)">{{item.userName}}</td>
+									<td>{{item.mobile}}</td>
+									<td>{{item.department == '' ? '未分组' : item.department}}</td>
+									<td>{{item.position}}</td>
+									<td>{{item.positionLevel}}</td>
+									<td>{{item.affairsLeaveDays}}</td>
+									<td>{{item.sickLeaveDays}}</td>
+									<td>{{item.annualLeaveDays}}</td>
+									<td>{{item.restLeaveDays}}</td>
+									<td>{{item.marriageLeaveDays}}</td>
+									<td>{{item.maternityLeaveDays}}</td>
+									<td>{{item.paternityLeaveDays}}</td>
+									<td>{{item.funeralLeave}}</td>
+									<td>{{item.roadLeaveDays}}</td>
+									<td>{{item.otherDays}}</td>
+							</tr>
+							<tr *ngIf="listData.length==0"><td colspan="17" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+		</div>
+		<!--请假明细-->
+		<div class="dbody" *ngIf="tableCurreny ==2">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>员工姓名</td>
+							<td>所属部门</td>
+							<td>职位</td>
+							<td>开始时间</td>
+							<td>结束时间</td>
+							<td>请假时长(天)</td>
+							<td>请假类型</td>
+							<td>提交时间</td>
+							<td>请假事由</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+					<tbody>
+							<tr class="check-detail" *ngFor="let item of listData">
+									<td title="{{item.userName}}">{{item.userName}}</td>
+									<td>{{item.department == '' ? '未分组' : item.department}}</td>
+									<td>{{item.position}}</td>
+									<td>{{item.startTime}}</td>
+									<td>{{item.endTime}}</td>
+									<td>{{item.leaveTimeSpanDays}}</td>
+									<td>{{item.leaveType}}</td>
+									<td>{{item.submitDate}}</td>
+									<td>{{item.desc}}</td>
+									<td>{{item.applyStatus == 4 ? '已撤销':'--'}}</td>
+								    <!--<td class="firstTd" >{{item.applyStatus == 4 ? '已撤销':'撤销'}}</td>-->  <!--如果是考勤管理员权限，则可以撤销-->
+							</tr>
+							<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+		</div>
+		<div class="flright clear" *ngIf="listData.length>0">
+			<ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+		</div>
+    </div>
+</div>

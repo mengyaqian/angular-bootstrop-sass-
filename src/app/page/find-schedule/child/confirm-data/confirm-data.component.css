@@ -1,0 +1,132 @@
+.saas-unconfirmed{
+	position: relative;
+    background: #fff;
+    margin-left: 360px;
+}
+.saas-unconfirmed .work-top{
+	padding-left:24px;
+    border-bottom: 1px solid #d0d0d0;
+    margin-top: 70px;
+}
+.saas-unconfirmed .work-top p{
+    margin-bottom: 0;
+    line-height:50px;
+}
+.saas-unconfirmed>ul{
+	padding-top: 32px;
+    margin: 0 0 0 20px;
+    overflow-y: auto;
+    height:860px;
+}
+.saas-unconfirmed>ul>li{
+	width: 100%;
+	border-bottom: 1px solid #d0d0d0;
+	padding-bottom: 20px;
+}
+.saas-unconfirmed>ul>li>ul>li>p{
+    margin-bottom: 0;
+}
+.saas-unconfirmed>ul>li ul{
+	margin-left: 40px;
+}
+.saas-unconfirmed>ul>li ul li:last-child{
+	clear: both;
+}
+.saas-unconfirmed>ul>li ul li{
+	height: 30px;
+	line-height: 30px;
+	margin-top: 5px;
+	font-size: 14px;
+}
+.saas-unconfirmed>ul>li ul li:nth-last-child(2){
+	height: 50px;
+}
+.saas-unconfirmed>ul>li ul li:nth-last-child(2) div{
+	float: left;
+	width: 80%;
+	margin-top: 12px;
+}
+.saas-unconfirmed>ul>li ul li:nth-last-child(2) div p{
+	position: relative;
+	float: left;
+	width: 40px;
+	height: 40px;
+	margin-bottom: 5px;
+	margin-right: 5px;
+}
+.saas-unconfirmed>ul>li ul li:nth-last-child(2) div span{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.saas-unconfirmed>ul>li ul li:nth-last-child(2) div span img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50px;
+}
+.saas-unconfirmed>ul>li ul li:nth-last-child(2) div b{
+	position: absolute;
+	right: -2px;
+	top: -10px;
+}
+.saas-unconfirmed>ul>li ul li:nth-last-child(2) div b img{
+	width: auto;
+	height: auto;
+}
+.saas-unconfirmed>ul>li ul li:first-child{
+	margin-top: 20px;
+}
+.saas-unconfirmed>ul>li ul li p{
+	float: left;
+}
+.saas-unconfirmed>ul>li ul li p:nth-child(1) {
+	width: 20px;
+}
+.saas-unconfirmed>ul>li>ul>li>p:nth-child(1) img{
+	width: auto;
+	height: auto;
+	margin-top:4px;
+	display: block;
+}
+.saas-unconfirmed>ul>li ul li p:nth-child(2){
+	color: #22507A;	
+	margin-left:3px;
+}
+.saas-unconfirmed>ul>li>ul>li>p:nth-child(3){
+	width: 84%;
+	word-wrap:break-word;
+}
+.saas-unconfirmed>ul>li>ul>li:last-child p:nth-child(3){
+	line-height: 20px;
+}
+.saas-unconfirmed>ul>li>div{
+	height: 32px;
+	margin-left: 40px;
+	margin-top: 22px;
+	clear: both;
+}
+.saas-unconfirmed>ul>li>div p{
+	width: 80px;
+	height: 32px;
+	line-height: 32px;
+	background: #2d8fd7;
+	margin-right: 30px;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 4px;
+	text-align: center;
+	float: left;
+}
+.saas-unconfirmed>ul>li>div p:hover{
+	background: #00ABEC;
+}
+.saas-unconfirmed>ul>li:first-child{
+	border-top: 1px solid #d0d0d0;
+}
+.timeconflict{background: #EB9100;width:80px;height:32px;color:#fff;text-align:center;cursor:pointer;line-height: 32px;}
+.saas-unconfirmed>ul>li ul li .inactive{
+    display: none;
+}
+.saas-unconfirmed>ul>li ul li .active{
+    display: block;
+}

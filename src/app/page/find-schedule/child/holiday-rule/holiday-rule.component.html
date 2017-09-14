@@ -1,0 +1,70 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="report-tt"><span class="bd"></span><b>考勤报表</b>&nbsp;|&nbsp;<b>假期规则维护</b></div>
+		<div class="dbody">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>假期名称</td>
+							<td>总天数</td>
+							<td>开始时间</td>
+							<td>结束时间</td>
+							<td>休假规则</td>
+							<td>允许连续休假天数</td>
+							<td>超标是否允许提交</td>
+							<td>状态</td>
+						</tr>
+					</thead>
+					<tbody>
+							<tr class="check-detail" *ngFor="let item of listData">
+									<td class="firstTd" (click)="editHoliday(item.id,holiday)">{{item.leaveTypeName}}</td>
+									<td>{{item.sumDays || '--'}}</td>
+									<td>{{item.startDate ? (item.startDate | date:"MM-dd") : '--'}}</td>
+									<td>{{item.endDate ? (item.endDate | date:"MM-dd") : '--'}}</td>
+									<td>{{item.restType ?'分次':'连续'}}</td>
+									<td>{{item.restDays ? item.restDays:'--'}}</td>
+									<td>{{item.exceedSubmit ?'是':'否'}}</td>
+									<td>{{item.status ?'启用':'禁用'}}</td>
+							</tr>
+							<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+		</div>
+    </div>
+</div>
+<!--假期规则维护-->
+<ng-template #holiday let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<p class="modal-title">假期规则维护</p>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<ul class="addHoliday">
+			
+			<li><label>假期名称<i>＊</i>:</label><input  type="text" name="holidayName" [(ngModel)]="holidayInfo.leaveTypeName" readOnly></li>
+			<li [hidden]="!holidayInfo.restType || holidayInfo.leaveTypeName=='年假' ||  holidayInfo.leaveTypeName=='annual leave'" class="countDayLi"><label>总天数:</label><input type="number" name="countDay" [(ngModel)]="holidayInfosumDays">天</li>
+			<li [hidden]="!holidayInfo.restType" class="startDateLi"><label>开始日期:</label><input type="text" name="startDate" [(ngModel)]="holidayInfostartDate"></li>
+			<li><label>休假规则:<i>＊</i>:</label><input  type="text" name="holidayRole" [(ngModel)]="holidayInforestType"  readOnly></li>
+			<li><label>允许连续休假天数<i>＊</i>:</label><input type="number" name="allowDate" [(ngModel)]="holidayInforestDays"></li>
+			<li><label>超标是否允许提交:<i>＊</i>:</label>
+				<select name="" id="" [(ngModel)]="holidayInfo.exceedSubmit">
+					<option value="true">是</option>
+					<option value="false">否</option>
+				</select>
+			</li>
+			<li><label>是否启用:<i>＊</i>:</label>
+				<select name="" id="" [(ngModel)]="holidayInfo.status">
+					<option value="true">是</option>
+					<option value="false">否</option>
+				</select>
+			</li>
+			<p style="clear:both"></p>
+		</ul>
+		<div class="btnbox">
+			<div (click)="saveHoliday(d)" class="btn btn-primary">保存</div>
+		</div>
+		
+	</div>
+</ng-template>

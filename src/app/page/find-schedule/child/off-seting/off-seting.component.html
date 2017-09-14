@@ -1,0 +1,80 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="report-tt"><span class="bd"></span><b>考勤报表</b>&nbsp;|&nbsp;<b>调休维护</b></div>
+		<div class="mg-cont">
+				<div class="mg-tit">
+					<span>姓名 </span>
+					<input class="order-txt w120"  name="username"  type="text" [(ngModel)]="userName">
+					<span class="pl30">费控宝账号 </span>
+					<input class="order-txt w120"  name="number" type="text" [(ngModel)]="fkbNo">
+					<span class="pl30">清空日期</span>
+					<input class="order-txt w120"  name="year" type="text" [(ngModel)]="yearRang" appDateDirective (selected)="dateSelected($event)" readonly>
+					<div class="btn btn-primary ft14" (click)="serach()">查询</div>
+					<div class="btn btn-primary ft14"  (click)="reset()">重置</div>
+				</div>
+		</div>
+		<div class="dbody">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>姓名</td>
+							<td>职位</td>
+							<td>部门</td>
+							<td>费控宝账号</td>
+							<td>规定调休天数</td>
+							<td>加班申请调休天数(小时)</td>
+							<td>剩余天数(小时)</td>
+							<td>使用天数(小时)</td>
+							<td>冻结天数(小时)</td>
+							<td>清空日期</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="check-detail" *ngFor="let item of listData">
+								<td>{{item.userName}}</td>
+								<td>{{item.positionName}}</td>
+								<td>{{item.department}}</td>
+								<td>{{item.mobile}}</td>
+								<td>{{item.setedSumDays}}</td>
+								<td>{{item.restSumDays}}(<span>{{item.restSumHours}}</span>小时)</td>
+								<td>{{item.restDays}}(<span>{{item.restHours}}</span>小时)</td>
+								<td class="firstTd" (click)="useDay(useday,item.userId,item.ruleId,item.restedSumHours)">{{item.restedSumDays}}(<span>{{item.restedSumHours}}</span>小时)</td>
+								<td >{{item.frozenRestDays}}(<span>{{item.frozenRestHours}}</span>小时)</td>
+								<td>{{item.clearDate.substring(0,11)}}</td>
+						</tr>
+						<tr *ngIf="listData.length==0"><td colspan="13" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+			<div class="flright clear" *ngIf="listData.length>0">
+					<ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+			</div>
+		</div>
+		
+    </div>
+</div>
+<!--使用天数查看-->
+<ng-template #useday let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<p class="modal-title">使用详情</p>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="dbody">
+					<table class="report-tb1" border="1">
+							<thead>
+								<tr><td>开始日期</td><td>结束日期</td><td>请假时长</td><td>备注</td></tr>
+							</thead>
+							<tbody>
+								<tr class="check-detail" *ngFor="let item of usedayInfo">
+									<td>{{item.leaveStart | date:"y-MM-dd"}}</td>
+									<td>{{item.leaveEnd | date:"y-MM-dd"}}</td>
+									<td>{{item.leaveTimeSpanM}}</td>
+									<td>{{item.leaveDesc}}</td>
+								</tr>
+							</tbody>
+					</table>
+			</div>	
+		</div>
+</ng-template>

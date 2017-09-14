@@ -1,0 +1,19 @@
+<div class="date-centent">
+	<ul class="date-week">
+		<li style="height: 45px; line-height: 45px; font-size: 12px;">周日</li>
+		<li style="height: 45px; line-height: 45px; font-size: 12px;">周一</li>
+		<li style="height: 45px; line-height: 45px; font-size: 12px;">周二</li>
+		<li style="height: 45px; line-height: 45px; font-size: 12px;">周三</li>
+		<li style="height: 45px; line-height: 45px; font-size: 12px;">周四</li>
+		<li style="height: 45px; line-height: 45px; font-size: 12px;">周五</li>
+		<li style="height: 45px; line-height: 45px; font-size: 12px;">周六</li>
+	</ul>
+	<ul class="date-day">
+		<li class="details" [ngClass]='{"day-black move":item.isThisMonth,"day-gray":!item.isThisMonth,"this-day":item.day==date}' 
+			*ngFor='let item of scheduleData' (click)="open(item)">
+			{{item.date}}
+			<img *ngIf='item.info && item.info.scheduleList.length!=0' src="../../assets/images/1 (1).png">
+		</li>
+
+	</ul>
+</div>

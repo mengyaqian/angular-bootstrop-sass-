@@ -1,0 +1,10 @@
+.wxhtes {
+    text-align: center;
+    margin: 27px 0;
+    font-size: 16px;
+}
+input {
+    width: 218px;
+    margin: 0 0 20px 26px;
+    border: 1px solid #37C1F7 !important;
+}

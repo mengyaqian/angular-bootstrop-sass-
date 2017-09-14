@@ -1,0 +1,52 @@
+	<div class="modal-header modalheader">
+		<h6 class="modal-title">发布公告</h6>
+		<button type="button" class="close" aria-label="Close" (click)="close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+<div class="release-affiche-box">
+        <p data-localize="ChineseEnglish.fsongfaw">发送范围</p>
+        <div class="release_input release_input_box">
+            <p class="release_placeholder" style="display: none;" data-localize="ChineseEnglish.xzbumens">选择部门</p>
+            <span id="add_list" style="clear:both;display: block;height: 1px;"></span>
+            <img class="img_animate" src="../../../assets/images/open.png?1.4.1">
+            <ul class="release_input_ul addnotice" style="bottom: -40px;">
+                <li id="org_1078" class="">
+                    测试英文<span>（1）</span>
+                    <input hidden="hidden" name="orgId" value="1078">
+                </li>
+                
+            </ul>
+        </div>
+        <p data-localize="ChineseEnglish.ggbiaoti">公告标题</p>
+        <div class="release_input" style="text-indent: 0;">
+            <input maxlength="50" type="text" name="" id="noticetitle" value="" data-localize="ChineseEnglish.ggbiaoti" placeholder="公告标题">
+        </div>
+        <p data-localize="ChineseEnglish.ggzhenwe">公告正文</p>
+        <div class="super-textarea">
+
+            <div style="border: 1px #d2d2d2 solid; border-top: none; border-radius:0 0 4px 4px;width:100%;">
+
+                <div class="send-file">
+                    <p>
+                        <span><img src="../../../assets/images/1 (50).png?1.4.1"></span>
+                        <input type="file" id="filenotice" name="filet" class="hide">
+                        <label id="filenotices" for="filenotice" data-localize="ChineseEnglish.tijisbfu">添加附件</label>
+                    </p>
+                </div>
+                <div id="notice_files" class="file-div upload-file-container">
+                    <p style="clear: both;" class="div_buttom"></p>
+                </div>
+            </div>
+        </div>
+        <div class="affiche-footerButton">
+            <input type="button" class=' btn-primary'  value="发布">
+            <input type="button" class=' btn-primary'  value="保存草稿">
+            <input type="button" class=' btn-primary'  value="取消">
+        </div>
+    </div>
+
+
+
+	</div>

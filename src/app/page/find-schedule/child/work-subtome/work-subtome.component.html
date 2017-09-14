@@ -1,0 +1,45 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="work-top">
+			提交给我的工作报告
+    </div>
+    <div class="work-select select_even"> 
+      <p (click)="submitter()"> 
+         <span class="personSub">全部提交人</span>
+         <span><img src="../../../assets/images/open.png" /></span> 
+      </p> 
+      <ul class="ps-container" [hidden]="Contacts">
+        <li><input type="text" name="friend" [(ngModel)]="searchnema" (keyup)="searchkey()" value="" placeholder="查找成员..." /></li>
+				<li class="li" (click)="worktomeList()">全部联系人</li>
+				<li class="li" *ngFor="let item of listData" (click)="nameseach(item.wreport.userId)">{{item.user ? item.user.nickname : item.nickname}}</li>
+				
+      </ul> 
+    </div>
+		<div class="work-select select_odd"> 
+			<select [ngModel]="student" (ngModelChange)="student=$event;setInfo()">
+				<option *ngFor="let item of students" [value]='item.id'>{{item.name}}</option> 
+			</select>
+    </div>
+    <div style="clear:both;"></div>
+		<ul class="work-ul">
+			 <li *ngFor="let item of listData">
+				<div>
+					<div>
+						<img src="{{item.user.avatarMid}}" />
+					</div>
+					<div>
+					<p>{{worktext(item.wreport.type)}}</p>
+					<p>{{item.wreport.createDate}}</p>
+					</div>
+				</div>
+				<div>
+					{{item.wreport.todaySummary}}
+				</div>
+				<div>
+					{{item.wreport.updateDate}}
+				</div>
+				<span><img src="../../../assets/images/1 (93).png" /></span>
+			</li>
+		</ul>
+	</div>
+</div>

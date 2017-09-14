@@ -1,0 +1,32 @@
+<div class="saas-left ps-container" id="work-information" (outputValue)="getValue($event)">
+		<p [ngClass]="{'left-p-click':bar.check}" *ngFor='let bar of barArr;let i=index'>
+		    <a [ngClass]="bar.class" (click)="barClick(bar)" >
+			<span>{{bar.name}}</span>
+			<b id="message_db" style="display:none;"></b>
+			</a>
+		</p>
+		
+	<div class="ps-scrollbar-x-rail" style="width: 160px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 785px; display: none; right: 3px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></div>
+
+
+<div class="saas-work-left" style="height: 100%;" *ngIf='barChild'>
+	<ul class="work-ul-2">
+
+		<div *ngIf="barChild.topTit" class="txtTop">
+			{{barChild.topTit.name}}
+		</div>
+		<div *ngIf="barChild.button" (click)='add(barChild)'>
+
+			<p><img src="../../../assets/images/1 (7).png?1.4.1"></p>
+			<p>{{barChild.button.name}}</p>
+		</div>
+		<li  [ngClass]="{'bk-list-1':item.check}" *ngFor='let item of barChild.list' (click)='barChildClick(item)'><a href='javascript:void(0)'>{{item.name}}</a></li>
+	</ul>
+	<input type="hidden" id="routine_billid" value="">  <!-- //事务性沟通id -->
+</div>
+
+
+
+
+
+

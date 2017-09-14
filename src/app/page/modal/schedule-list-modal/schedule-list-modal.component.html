@@ -1,0 +1,15 @@
+	<div class="modal-header modalheader">
+		<h6 class="modal-title">日程安排</h6>
+		<span>{{date}}</span>
+		<button type="button" class="close" aria-label="Close" (click)="close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<ul class="ps-container schedule_list">
+			<li (click)='itemClick(item)' *ngFor='let item of dataArr'>
+				<p><img src="../../../assets/images/1 (1).png"></p>
+				<p class="text-hidden">{{item.name}}</p>
+			</li>
+		</ul>
+	</div>

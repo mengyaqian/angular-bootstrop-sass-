@@ -1,0 +1,67 @@
+<!-- 页面主体 -->
+<div class="businessDocument">
+	<div class="examinationApprova-top">
+		<p>滴滴出行</p>
+	</div>
+	<div id="js_top_menu" class="businessDocument-select clearfix" >
+		<div>
+			<span>时间</span>
+			<input type="text" class="datetime" id="begin-date"  [(ngModel)]="beginDate"  appDateDirective  (selected)="dateSelected($event,'begin')" readonly >
+			<i>~</i>
+			<input type="text" class="datetime" id="end-date"  [(ngModel)]="endDate"  appDateDirective  (selected)="dateSelected($event,'end')" readonly > 
+		</div> 
+		<div>
+			<span>用车方式</span>
+			<select class="selects" [(ngModel)]="carTypeDefine">
+			<option *ngFor="let i of carType" [value]="i.status">{{i.name}}</option>
+			</select>
+		</div>
+		<div>
+			<span>支付方式</span>
+			<select class="selects" [(ngModel)]="payStatusDefine">
+			  <option *ngFor="let i of payStatus" [value]="i.status">{{i.name}}</option>
+			</select>
+		</div>
+		<div (click)="getList()" class="btn btn-primary addmyBtn">查询</div>
+		<div (click)="reset()" class="btn btn-primary addmyBtn">重置</div>
+	</div>	
+	<div class="btnBox clearfix">
+		<div class="btn btn-primary">日常报销</div>
+		<div class="btn btn-primary">差旅报销</div>
+	</div>  
+
+	<div class="dbody">
+			<table id="js_year_tb" class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td></td>
+							<td>外部订单号</td>
+							<td>订单类型</td>
+							<td>订单时间</td>
+							<td>支付方式</td>
+							<td>支付金额</td>
+							<td>报销状态</td>
+							<td>选择</td>
+						</tr>
+					</thead>
+
+					<tbody id="js_bill_ullist">
+						<tr class="check-detail" *ngFor="let item of listData;let i = index">
+								<td>{{i+1}}</td>
+								<td class="tLink">{{item.order_id}}</td>
+								<td>{{switchCarType(item.use_car_type)}}</td>
+								<td>{{item.pay_time}}</td>
+								<td>{{item.pay_type ==0 ?'企业支付':'个人支付'}}</td>
+								<td>CNY {{item.actual_price}}</td>
+								<td>{{item.fkbStatus == 0 ?'未报销':'已报销'}}</td>
+								<td><input type="checkbox" [disabled]="item.fkbStatus == 1 "></td>
+						</tr>
+						<tr *ngIf="listData.length==0"><td colspan="11" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+
+			</table>
+			<div class="flright clear" *ngIf="listData.length>0">
+			   <ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+			</div>
+		</div>
+</div>

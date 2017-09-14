@@ -1,0 +1,33 @@
+<div class="saas-unconfirmed">
+    <div class="work-top">
+        <p>待确认日程</p>
+    </div>
+    <ul id="tobeconfirmed">
+        <li *ngFor="let item of listData" >
+            <ul>
+                <li><p><img src="../../../assets/images/dsadhushosia (4).png" /></p><p>日程标题：</p><p>{{item.schedule.name}}</p></li>
+                <li><p><img src="../../../assets/images/dsadhushosia (9).png" /></p><p>开始时间：</p><p style="width:165px">{{item.schedule.startDate}}</p><p class="timeconflict" [(ngClass)]="{true: 'active', false: 'inactive'}[item.schedule.conflict]">时间冲突</p></li>
+                <li><p><img src="../../../assets/images/dsadhushosia (3).png" /></p><p>地点：</p><p>{{item.schedule.address}}</p></li>
+                <li style="clear:both;"><p><img src="../../../assets/images/323232322.png" /></p><p>发起人：</p><p>{{item.schedule.username}}</p></li>
+                <li>
+                    <p><img src="../../../assets/images/dsadhushosia (1).png" /></p><p>参与人员：</p>
+                    <div>
+                        <p *ngFor="let dtimg of item.scheduleUserList">
+                            <span><img src="{{dtimg.user.avatarMid}}" /></span>
+                            <b><img src="{{confirmimg(dtimg.user.type)}}" /></b>
+                        </p>
+                    </div>
+                </li>
+                <li>
+                    <p><img src="../../../assets/images/dsadhushosia (13).png" /></p>
+                    <p>日程摘要：</p><p>{{item.schedule.content}}</p>
+                </li>
+            </ul>
+            <p style="height: 10px; clear: both;"></p>
+            <div>
+                <p (click)="confirm(2,item.schedule.id)">拒绝</p>
+                <p (click)="confirm(1,item.schedule.id)">确认</p>
+            </div>
+        </li>
+    </ul>
+</div>

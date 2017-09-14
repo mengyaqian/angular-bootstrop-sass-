@@ -1,0 +1,315 @@
+#login{background: #E9ECF0;height: 100%;}    
+header {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    background: #277BCF;
+    position: fixed;
+    top: 0px;
+    z-index: 8;
+}
+.saas-logo {
+    float: left;
+    height: 100%;
+}
+.saas-logo p:first-child {
+    line-height: 16px;
+    margin: 15px 10px 0 10px;
+}
+.saas-logo p:last-child {
+    border-left: 1px solid #fff;
+    margin-top: 25px;
+    line-height: 24px;
+    padding-left: 8px;
+}
+.saas-logo p {
+    float: left;
+    color: #fff;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: inline;
+}
+
+.login-box {
+    width: 100%;
+    height: 88%;
+    position: relative;
+}
+
+.login-app {
+    width: 500px;
+    top: 133px;
+    position: absolute;
+    border: 1px solid #d0d0d0;
+    background: #fff;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+.login {
+    display: block;
+    top: 159.5px;
+    position: relative;
+    margin: 0 auto;
+    width: 500px;
+    border: 1px solid #d0d0d0;
+    padding-top: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px #d0d0d0;
+}
+
+.login .login-top {
+    height: 70px;
+    line-height: 70px;
+    padding: 0 10%;
+}
+
+.login .login-top>div:first-child {
+    float: left;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+.login .login-top>div:first-child p {
+    font-size: 16px;
+    cursor: pointer;
+    color: #B8B8B8;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.login .login-top>div:last-child {
+    float: left;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+.login .login-top>div:last-child p {
+    font-size: 16px;
+    cursor: pointer;
+    color: #B8B8B8;
+    border-bottom: 1px solid #d0d0d0;
+}
+.border-bottom {
+    color: #277BCF !important;
+    border-bottom: 4px solid #277BCF !important;
+    height: 67.3px;
+}
+.login-content-2 form p:first-child img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 80px;
+}
+.login-content-2 form p:first-child {
+    margin: 20px auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 60px;
+    border: 1px solid #2C7ED0;
+}
+
+.login-content-1 p:first-child {
+    width: 50%;
+    margin: 30px auto 0;
+}
+.login-content-1 p:nth-child(2) {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 12px;
+    text-align: center;
+    color: #333333;
+}
+
+.login-content-1 p:nth-child(3) {
+    margin: 28px auto;
+    text-align: center;
+    font-size: 14px;
+    color: #277BCF;
+    cursor: pointer;
+}
+.login-content-1 p:nth-child(3) a {
+    color: #277bcf;
+}
+
+.login-content-2 form p:nth-child(2) {
+    width: 70%;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+.login-content-2 form p:nth-child(2) input {
+    height: 100%;
+    padding-left: 5%;
+    width: 95%;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.login-content-2 form p:nth-child(3) {
+    width: 70%;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.login-content-2 form p:nth-child(3) input {
+    padding-left: 5%;
+    height: 100%;
+    width: 95%;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.login-content-2 form .error {
+    height: 20px;
+    line-height: 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.login-content-2 form .error span:nth-child(1) {
+    display: block;
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    background: url(../../assets/images/u218.png) no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.login-content-2 form .error span:last-child {
+    color: #666666;
+}
+
+.login-content-2 form p:last-child {
+    width: 70%;
+    height: 50px;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+.login-content-2 form p:nth-child(2) {
+    width: 70%;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+.login-content-2 form p:nth-child(2) input {
+    height: 100%;
+    padding-left: 5%;
+    width: 95%;
+    border-radius: 5px;
+    font-size: 12px;
+}
+.login-content-2 form p:nth-child(3) {
+    width: 70%;
+    height: 50px;
+    border: 1px solid #D1D1D1;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+.login-content-2 form p:nth-child(3) input {
+    padding-left: 5%;
+    height: 100%;
+    width: 95%;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.login-content-2 form p:last-child {
+    width: 70%;
+    height: 50px;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+.login-content-2 form p:last-child input {
+    width: 100%;
+    height: 100%;
+    background: #E6E6E6;
+    color: #999999;
+    font-size: 14px;
+    border-radius: 5px;
+    background: rgb(0, 102, 204);
+    color: rgb(255, 255, 255);
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.login-content-2 .wjpwd-register {
+    margin: 10px auto;
+    text-align: center;
+    font-size: 14px;
+    color: #0066CC;
+    cursor: pointer;
+    width: 70%;
+}
+
+.login-content-2 .bottomp {
+    height: 80px;
+}
+.login-content-2 .wjpwd-register {
+    margin: 10px auto;
+    text-align: center;
+    font-size: 14px;
+    color: #0066CC;
+    cursor: pointer;
+    width: 70%;
+}
+.login-content-2 .wjpwd-register a:first-child {
+    color: #5591D6;
+    display: block;
+    float: left;
+}
+.login-content-2 .wjpwd-register a:last-child {
+    color: #5591D6;
+    display: block;
+    float: right;
+}
+
+.login-app li:nth-child(1) {
+    margin: 0 auto;
+    margin-top: 64px;
+    height: 120px;
+    width: 120px;
+}
+.login-app li:nth-child(2) {
+    margin: 0 auto;
+    margin-top: 40px;
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+}
+.login-app li:nth-child(3) {
+    margin: 0 auto;
+    margin-top: 24px;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+}
+.login-app li:nth-child(4) {
+    margin: 0 auto;
+    margin-top: 88px;
+    margin-bottom: 56px;
+    font-size: 14px;
+    color: #277bcf;
+    text-align: center;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+}

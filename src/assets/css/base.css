@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* CSS Document */
+html,body{background-color:white;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,tt,var,dd,dl,dt,li,ol,ul,fieldset,form,label,legend,input,select,textarea,table,caption,tbody,tfoot,thead,tr,th,td {margin:0; padding:0;}
+/*全局样式*/
+body {font:14px/1.5 microsoft yahei; color:#000; font-size:14px; font-family:microsoft yahei}/*  \5fae\8f6f\96c5\9ed1 微软雅黑   \5b8b\4f53 宋体 */
+a img, img, iframe {border:0;}
+a span, form label {cursor:pointer;}
+table,tbody, tfoot, thead, tr, th, td { border-spacing:0; padding:0px; margin:0px;}
+a{ text-decoration:none;color:#333; hide-focus:expression(this.hideFocus=true);outline: none; cursor:pointer;}
+a:hover{text-decoration:none;}
+input,select {outline:none; font-size:12px;vertical-align:-2px}
+b,strong {font-weight:bold;}
+/*段落*/
+li ul,li ol,ul, ol{ margin:0; }
+ul,ol{ list-style:none }
+ul{padding:0;margin:0}
+dl,dt,dd { margin: 0; }
+dd {margin-left:0;}
+textarea {-webkit-appearance: textarea; border-image: initial; -webkit-rtl-ordering: logical;-webkit-user-select: text;-webkit-box-orient: vertical;
+    font-size:12px;white-space: pre-wrap;word-wrap: break-word;text-transform: none;outline:none;resize:none;}
+
+/*清除浮层*/
+.clear{clear:both; height:0px; overflow:hidden;}
+.clearfix:after,.content:after { content:""; display:block; height:0; clear:both; visibility:hidden; }
+* html .clearfix,* html .content { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix,*:first-child+html .content  { zoom: 1; } /* IE7 */
+/*整体框架*/
+h1,h2,h3,h4,h5,h6 {font-weight:bold; color: #333; font-family:黑体; margin-bottom: 0em;}
+h1 img, h2 img, h3 img,h4 img, h5 img, h6 img {margin: 0;}
+
+input,input:focus,input:active{user-select: text;}
+input[type="text"],input[type="password"] { background-color:transparent;}
+
+.fleft { float:left;}
+.fright { float:right;}
+
+.marTop20 { margin-top:20px;}
+.marTop0 { margin-top:0px !important}
+.marTop10 { margin-top:10px;}
+.marRight15 { margin-right:15px;}
+
+.paddTop5 { padding-top:5px !important;}
+.paddBot20 { padding-bottom:20px !important}
+
+.marBot0 { margin-bottom:0px !important}
+.marBot20 { margin-bottom:20px !important}
+.marBot10 { margin-bottom:10px !important}
+
+.width210 { width:210px !important}
+
+
+.yellowWord { color:#ff8000 !important;}
+.color333 { color:#333 !important;}
+.redWord { color:#f43f00 !important}
+
+input[type="button"],input[type="submit"]{-webkit-appearance:none;outline:none}

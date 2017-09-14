@@ -1,0 +1,86 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="work-top">
+			我提交的工作报告
+		</div>
+		<div class="work-select select_odd">
+			<select [ngModel]="student" (ngModelChange)="student=$event;setInfo()">
+				<option *ngFor="let item of students" [value]='item.id'>{{item.name}}</option> 
+			</select>
+		</div>
+		<ul class="work-ul">
+			 <li *ngFor="let item of listData" (click)="workPopup(work,item.id)">
+				<div>
+					<div>
+						<img  src="{{item.type | workImg}}" />
+					</div>
+					<div>
+					<p>{{worktext(item.type)}}</p>
+					<p>{{item.createDate}}</p>
+					</div>
+				</div>
+				<div>
+					{{item.todaySummary}}
+				</div>
+				<div>
+					{{item.updateDate}}
+				</div>
+				<span><img src="../../../assets/images/1 (93).png" /></span>
+			</li>
+		</ul>
+	</div>
+</div>
+<!--详情-->
+<ng-template #work let-c="close" let-d="dismiss">
+	<div class = "modal-header" > 
+		<h4 class ="modal-title pull-left">{{worktext(listpopup.wrpeort.type)}}</h4> 
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+  	<div class = "modal-body" > 
+		<div class="report-content">
+			<div class="report-img">
+				<img src="../../../assets/images/1 (12).png" />
+			</div>
+			<p class="report-data">{{listpopup.wrpeort.createDate}}</p>
+			<p class="report-data-p">今日总结</p>
+			<div class="report-day-sum">
+				<div>
+					{{listpopup.wrpeort.todaySummary}}
+				</div>
+				<div>
+					<div class="accessory-box">
+						<div *ngFor="let item of todaytwo" >
+							<p><img src="{{img}}" /></p>
+							<p class="text-hiddens">{{item}}<span>(0)</span></p>
+							<p><a href="{{listpopup.fileWork.todayUrls}}" target="_blank" download="{{listpopup.fileWork.todayName}}">下载</a></p>
+							<p><a href="{{listpopup.fileWork.todayUrls}}" target="_blank">预览</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p style="height: 10px;clear: both;"></p>
+			<p class="report-data-p">明日计划</p>
+			<div class="report-day-sum">
+				<div>
+					{{listpopup.wrpeort.nextPlan}}
+				</div>
+				<div>
+					<div class="accessory-box">
+						<div *ngFor="let item of nextnoe" >
+							<p><img src="{{img}}" /></p>
+							<p class="text-hiddens">{{item}}<span>(0)</span></p>
+							<p><a href="{{listpopup.fileWork.todayUrls}}" target="_blank" download="{{listpopup.fileWork.todayName}}">下载</a></p>
+							<p><a href="{{listpopup.fileWork.todayUrls}}" target="_blank">预览</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p class="report-people">批阅人：<span>{{listpopup.user.username}}</span></p>
+			<p class="report-people"><b>抄送人：</b><b *ngFor="let item of listpopup.users">{{item.username}},</b></p>
+			<p style="clear: both;height: 10px;"></p>
+			<p style="clear: both;height: 20px;"></p>
+		</div>
+  	</div>
+</ng-template>

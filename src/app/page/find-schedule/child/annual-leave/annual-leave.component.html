@@ -1,0 +1,112 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+		<div class="report-tt"><span class="bd"></span><b>考勤报表</b>&nbsp;|&nbsp;<b>年假维护</b></div>
+		<div class="mg-cont">
+				<div class="mg-tit">
+					<span>姓名 </span>
+					<input class="order-txt w120"  name="username"  type="text" [(ngModel)]="userName">
+					<span class="pl30">费控宝账号 </span>
+					<input class="order-txt w120"  name="number" type="text" [(ngModel)]="fkbNo">
+					<span class="pl30">年假年度</span>
+					<input class="order-txt w120"  name="year" type="text" [(ngModel)]="yearRang" appDateDirective [datePickerOptions]='dateTimeOption'  readonly>
+					<div class="btn btn-primary ft14" (click)="serach()">查询</div>
+					<div class="btn btn-primary ft14" (click)="reset()">重置</div>
+				</div>
+		</div>
+		<div class="dbody">
+			<table class="report-tb1" border="1">
+					<thead>
+						<tr>
+							<td>姓名</td>
+							<td>职位</td>
+							<td>部门</td>
+							<td>费控宝账号</td>
+							<td>入司日期</td>
+							<td>工作年限</td>
+							<td>年假年度</td>
+							<td>年假天数</td>
+							<td>剩余天数(小时)</td>
+							<td>使用天数(小时)</td>
+							<td>冻结天数(小时)</td>
+							<td>清空日期</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="check-detail" *ngFor="let item of listData">
+								<td>{{item.userName}}</td>
+								<td>{{item.position}}</td>
+								<td>{{item.department}}</td>
+								<td class="firstTd" (click)="yearModify(yearholiday,item.mobile,item.orgId)" >{{item.mobile}}</td>
+								<td>{{item.entryDate.time | date:"y-MM-dd"}}</td>
+								<td>{{item.workYears}}</td>
+								<td>{{item.yearRang}}</td>
+								<td>{{item.restDays}}</td>
+								<td>{{item.residueDays}}(<span>{{item.residueHours}}</span>小时)</td>
+								<td class="firstTd" (click)="useDay(useday,item.userId,item.ruleId,item.usedHours)">{{item.usedDays}}(<span>{{item.usedHours}}</span>小时)</td>
+								<td >{{item.frozenRestDays}}(<span>{{item.frozenRestHours}}</span>小时)</td>
+								<td>{{item.clearDate.time | date:"y-MM-dd"}}</td>
+						</tr>
+						<tr *ngIf="listData.length==0"><td colspan="13" style="color:#999;text-align:center">暂时没有相关记录信息</td></tr>
+					</tbody>
+			</table>
+			<div class="flright clear" *ngIf="listData.length>0">
+					<ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+			</div>
+		</div>
+		
+    </div>
+</div>
+<!--年假长度调整-->
+<ng-template #yearholiday let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<p class="modal-title">年假长度调整</p>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="maxAnnual">
+			<ul class="Annualleave">
+				<li><span>姓名:</span><input type="text" name="names" readOnly [(ngModel)]="holidayInfo.userName"/></li>
+				<li><span>费控宝帐 :</span><input type="text" id="mobile" name="tel" [(ngModel)]="holidayInfo.mobile" readOnly /></li>
+				<li><span>年假年度:</span><input type="text" readOnly name="years" [(ngModel)]="holidayInfo.yearRang" /></li>
+				<li><span>总天数:</span><input type="text" class="teinput" readOnly name="restDays" [(ngModel)]="holidayInfo.restDays" />天</li>
+				<li><span>清空日期:</span><input type="text" readOnly name="clearDate" [(ngModel)]="infoClearDate" /></li>
+				<li><span>调整天数<code>*</code>:</span><em (click)="changeDay(-1)" class="subtract userSelect">-</em><input class="adjust" type="text" name="changedays"  [(ngModel)]="infoChangeDays" readOnly/><em  (click)="changeDay(1)" class="augment userSelect">+</em></li>
+				<li><span>调整后天数<code>*</code>:</span><input class="adjustdays" type="text" readOnly name="afterRestDays" [(ngModel)]="infoAfterrestDays"/></li>
+				
+			</ul>
+			<p class="tiaobei"><span>调整备注<code>*</code>:</span><textarea name="remark" maxlength="200" [(ngModel)]="holidayInfo.remark">{{holidayInfo.remark}}</textarea></p>
+		</div>
+       <div class="btnbox">
+			<div (click)="saveHoliday(d)" class="btn btn-primary">保存</div>
+	    </div>
+		
+	</div>
+</ng-template>
+<!--使用天数查看-->
+<ng-template #useday let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<p class="modal-title">使用详情</p>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="dbody">
+					<table class="report-tb1" border="1">
+							<thead>
+								<tr><td>开始日期</td><td>结束日期</td><td>请假时长</td><td>备注</td></tr>
+							</thead>
+							<tbody>
+								<tr class="check-detail" *ngFor="let item of usedayInfo">
+									<td>{{item.leaveStart | date:"y-MM-dd"}}</td>
+									<td>{{item.leaveEnd | date:"y-MM-dd"}}</td>
+									<td>{{item.leaveTimeSpanM}}</td>
+									<td>{{item.leaveDesc}}</td>
+								</tr>
+							</tbody>
+					</table>
+			</div>	
+		</div>
+</ng-template>

@@ -1,0 +1,139 @@
+input,select{outline:none}  
+/*中间部分css**/
+.businessDocument{
+	min-width: 740px;
+	position:relative;
+	height:auto;
+	margin-left:160px;
+	background:#fff;
+	min-height:400px;
+    overflow: initial;
+    margin-top:70px;
+}
+.businessDocument-select{
+	width: 96%;
+	height: auto;
+	margin: 20px auto;
+	position: relative;	
+    z-index: 7;
+    padding-top:20px;
+}
+.businessDocument-select > div{
+	height: 30px;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 12px;
+	position: relative;
+}
+.businessDocument-select > div > span{
+	display: block;
+	float: left;
+	line-height: 30px;
+	margin-right: 10px;
+}
+.businessDocument-select > div:first-child > input{
+	width:160px ;
+	height: 30px;
+	padding:6px 0px 6px 8px;
+	display: block;
+	float: left;
+	border: 1px #D2D2D2 solid;
+	border-radius: 4px;
+}
+.businessDocument-select > div:nth-child(2){
+	width: 140px;
+	border: 1px #D2D2D2 solid;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+	border-radius: 4px;
+}
+.businessDocument-select > div > img{
+	width: 10px;
+	height: 5px;
+	display: block;
+	position: absolute;
+	color: #333333;
+	right: 10px;
+	top: 12px;
+}
+.businessDocument-select > div > p{
+	padding-left: 10px;
+	display: block;
+	line-height: 30px;
+	cursor: pointer;
+	color: #333333;
+}
+.businessDocument-select > div > div{
+	width: 100%;
+	max-height: 150px;
+	background: #FAFAFA;
+	overflow: hidden;
+	display: none;
+	border-radius: 4px;
+	position: absolute;
+	color: #333333;
+	top: 32px;
+	box-shadow: 0 2px 5px #999999;
+	-moz-box-shadow: 0 2px 5px #999999;
+	-webkit-box-shadow: 0 2px 5px #999999;
+	-o-box-shadow: 0 2px 5px #999999;
+}
+.businessDocument-select > div > div > span{
+	padding-left:10px ;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	cursor: default;
+	color: #333333;
+}
+.businessDocument-select > div > div > span:hover{
+	background: #C7C7C7;
+}
+.businessDocument-select > div > div > span:last-child{
+	margin-bottom: 15px;
+}
+.businessDocument-select > div:nth-child(3) > input{
+	width:105px ;
+	height: 30px;
+	padding:6px 0px 6px 8px;
+	display: block;
+	float: left;
+	border: 1px #D2D2D2 solid;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.businessDocument-select > div:nth-child(3) > img:first-child{
+	right: 150px;
+}
+.businessDocument-select > div:nth-child(3) > i{
+	display: block;
+	float: left;
+	line-height: 30px;
+	margin:0 10px;
+}
+.businessDocument-select > div:nth-child(4){
+	width: 125px;
+	/*border: 1px #D2D2D2 solid;*/
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+	border-radius: 4px;
+}
+.businessDocument-select > div:nth-child(5) > button{
+	width: 88px;
+	height: 30px;
+	border-radius: 4px;
+	line-height: 30px;
+	background:#277BCF;
+	color: #FFFFFF;
+}
+.addBussness{width:auto;padding:0 8px;line-height:30px;text-align:center;border-radius:4px;cursor:pointer;background:#277BCF;color:#fff}
+
+.selects{
+	width: 100%;
+	height:30px;
+	padding: 0 5px;
+	border-radius: 5px
+}
+.flright{float: right;}

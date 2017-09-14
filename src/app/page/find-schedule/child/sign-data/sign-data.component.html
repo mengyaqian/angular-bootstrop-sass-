@@ -1,0 +1,40 @@
+<div class="DateTableList">
+    <ul>
+        <li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li>
+    </ul>
+    <ul id="myReportList" class="reportListScroll">
+       <li *ngFor="let item of dateInfoList" [ngStyle]="{'color':item.isThisMonth ? '#333':'#999'}">{{item.date}}
+           <span class="times" [ngStyle]="{'color': item.signInfo.type ==6?'#00AEF0':'red'}" *ngIf="item.haveSign">{{item.signInfo.createOn == '无' ?'无':item.signInfo.createOn.substring(11,16)}}-{{item.signInfo.updateOn == '无' ? '无':item.signInfo.updateOn.substring(11,16)}}</span>
+           <div *ngIf="item.haveSign" class="signNo">{{item.signInfo.type | sign}}</div>
+           <div *ngIf="item.haveSignOut" class="Signblue" (click)="signOutDatial(item.signOutInfo.createOn,content)">{{item.signOutInfo.count}}</div>
+        </li>
+    </ul>
+</div>
+<div class="GoIcon clearfix">
+    <div (click)="changeMon('prev')" class="BeforeButton">
+        <span>上个月</span><img src="../../../../../assets/images/lastmonth.png">
+    </div>
+    <div (click)="changeMon('next')" class="AfterButton">
+        <span>下个月</span><img *ngIf="!isClick" src="../../../../../assets/images/nextmonth-2.png"><img *ngIf="isClick" src="../../../../../assets/images/nextmonth.png">
+    </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <p class="modal-title">签到详情</p>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+            <ul class="checkDetailUl">
+                <li *ngFor="let item of outSideData"><p style="width:14px;height:14px;float:left;margin-top:-2px;"><span></span><img src="../../../../../assets/images/GroupLi.png"></p>
+                    <div>
+                        <p>{{item.signTime.substring(5,16)}}</p>
+                        <p>{{item.address}}</p>
+                        <div class="Addresspic"></div>
+                    </div>
+                </li>
+            </ul>
+    </div>
+</ng-template>

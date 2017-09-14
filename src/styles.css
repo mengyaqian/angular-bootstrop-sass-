@@ -1,0 +1,119 @@
+/* You can add global styles to this file, and also import other style files */
+input {
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -o-user-select: text;
+}
+a {
+    text-decoration: none;
+}
+i{font-style: normal;font-size: 12px;}
+
+body, html {
+    font-family: "microsoft yahei","simsun","simhei";
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #FFFFFF;
+    height: 100%;
+}
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 14px;
+}
+img {
+    width: 100%;
+    height: auto;
+    display: inline;
+}
+button, input {
+    line-height: normal;
+}
+li {
+    list-style: none;
+}
+b, strong {
+    font-weight: normal;
+}
+
+.saas-nav a li b {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    font-size: 10px;
+    color: #fff;
+    border-radius: 50%;
+    line-height: 15px;
+    font-weight: 500;
+    background: red;
+    width: 10px;
+    height: 10px;
+}
+  .pointer{
+      cursor: pointer;
+  }
+  label{
+    font-weight: normal;
+  }
+ul {
+     margin: 0; 
+}
+
+p {
+    font-size: 14px; 
+    margin-bottom: 0;
+}
+input[type="text"][readonly]{
+    background: #FFFFFF;
+}
+
+.tooltip{
+    width:auto;
+    background: transparent;
+}
+
+.modalheader{
+        background: #E6EFF7;
+}
+/**table css*/
+.dbody {
+    margin: 10px 20px;
+}
+.report-tb1 {
+    width: 100%;
+    margin: 20px 0px;
+    text-align: center;
+}
+.report-tb1 thead {
+    background: #F5F6FA;
+}
+.report-tb1 td {
+    border: 1px solid #D2D2D2;
+    height: 40px;
+    padding: 0px 5px;
+	font-size: 12px;
+	text-align: center;
+	font-weight: normal;
+}
+.report-tb1 tbody td {
+    font-size: 12px;
+    min-width: 60px;
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	word-wrap: break-word;
+	text-align: center
+}
+.report-tb1 tbody td.firstTd, .report-tb1 tbody td.colorBlue {
+    color:#277BCF;
+    cursor: pointer;
+}
+.clear{zoom:1;}
+.clear:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+/*加载*/
+.tpl-loading{background:url("assets/images/loading3.gif") no-repeat center;height:100%;}
+.flright{float: right;}

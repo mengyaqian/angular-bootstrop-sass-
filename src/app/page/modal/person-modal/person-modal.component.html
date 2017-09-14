@@ -1,0 +1,64 @@
+	<div class="modal-header modalheader">
+		<h6 class="modal-title">选择人员</h6>
+		<button type="button" class="close" aria-label="Close" (click)="close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div id="two-choose-workmate-colleague">
+		<ul>
+			<li [hidden]='selectedArr.length==0' *ngFor='let s of selectedArr'>
+				<img [src]="s.avatarSmall">
+				<span><img src="../../../assets/images/delete.png"></span>
+			</li>
+
+			<div>
+				<p>
+					<img src="../../../assets/images/search.png">
+				</p>
+				<p>
+					<input type="text" (focus)='funcus()' [(ngModel)]='inputVal' (keyup)='fillter()'  placeholder="搜索">
+				</p>
+				<p class="close_search" *ngIf='chanelButton' (click)='chanelSelect()'>
+					<img src="../../../assets/images/close_chating.png">
+				</p>
+			</div>
+		</ul>
+		<p style="clear: both;"></p>
+		<div id="home-users-list" class="two-choose-workmate-list" *ngIf='!chanelButton'>
+			<div *ngFor='let item of personData'>
+				<p id="cdl-0">
+					<span>{{item.name}}(<b>{{item.users.length}}</b>)</span> 
+					<span>
+						<input type='checkbox' [(ngModel)]='item.checked'  (change)='allChange(item)'/>
+					</span>
+				</p>
+				<ul id="cdul-0">
+					<li *ngFor='let user of item.users'>
+						<p>
+							<input type='checkbox' [(ngModel)]='user.checked' (change)='selectPerson(user,item)'/>
+						</p>
+						<p>
+							<img class="border_radius" [src]='user.avatarSmall'>
+						</p>
+						<p>{{user.nickname}}</p>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		
+		<div class="colleague-search" *ngIf='chanelButton'>
+				<ul id="schedule-users3" *ngFor='let item of personSeoData'>
+					<li class="user-chat7357" *ngFor='let user of item.users'>
+						<p><input type='checkbox' [(ngModel)]='user.checked' (change)='selectPerson(user,item)'/></p>
+						<p><img class="border_radius" [src]='user.avatarSmall'></p>
+						<p>{{user.nickname}}</p>
+					</li>
+				</ul>
+		</div>
+		<input type="hidden" id="operateType" value="0">
+		<div class="two-choose-workmate-click" (click)="doAddUsers()">
+			确定<span id="checkCount">（{{selectedArr.length}}）</span>
+		</div>
+	</div>

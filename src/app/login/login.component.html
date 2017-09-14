@@ -1,0 +1,76 @@
+<div id='login'>
+		<header>
+			<div class="saas-logo" onclick="">
+				<p><a href="http://feikongbao.com/"><img src="../../assets/images/u191.png"/></a></p>
+				<p>登录</p>
+			</div>
+		</header>
+		<div class="login-box">
+			<ul class="login-app" *ngIf="login_state==1">
+				<li><img id="qr-avatar" src="../../assets/images/1.png"/></li>
+				<li>扫码成功</li>
+				<li>请在手机上点击确认登录</li>
+				<li id="QRlogin">返回二维码登陆</li>
+			</ul>
+			<div class="login" >
+				<div class="login-top" >
+					<div>
+						<p [ngClass]="{'border-bottom':login_state==2}" (click)='onLoginType(2)'>扫码登录</p>
+					</div>
+					<div>
+						<p [ngClass]="{'border-bottom':login_state==4}" (click)='onLoginType(4)'>密码登录</p>
+					</div>
+				</div>
+				<div class="login-content-1" *ngIf="login_state==2">
+					<p><img src="http://saas.feikongbao.com//yodooweb/web/QRCodeImage"/></p>
+					<p>请使用“费控宝app”扫描二维码登录</p>
+					<p><a [routerLink]="['/register']">新用户注册</a></p>
+				</div>
+				<div class="login-content-2" *ngIf="login_state==4">
+					<form #loginForm="ngForm">
+						<p><img src="../../assets/images/u16.jpg"/></p>
+						<p><span></span><input maxlength="11" type="text" name="mobile" [(ngModel)]="user.mobile" #mobile="ngModel" (blur)='onBlur()' required  placeholder="请输入手机号"/></p>
+						<p><input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" required  placeholder="请输入密码"/></p>
+						
+						<p class='error' [hidden]='mobile.pristine || mobile.valid'>
+							<span>!</span><span>请输入手机号码</span>
+						</p>
+						<p class='error' [hidden]='(password.pristine || password.valid) || !mobile.valid || errorState'>
+							<span>!</span><span>请输入密码</span>
+						</p>
+						<p class='error' [hidden]='!errorState'>
+							<span>!</span><span *ngIf='errorState==1'>请输入正确的手机号码</span>
+						</p>
+						<p><input type="button" [disabled]='!loginForm.form.valid && !errorState' (click)='login()' class="href"  value="登 录"/></p>
+					</form>
+					<p class="wjpwd-register">
+						<a [routerLink]="['/find_password']">忘记密码？</a>
+						<a [routerLink]="['/register']">新用户注册</a>
+					</p>
+					<p class="bottomp"></p>
+				</div>
+			</div>
+			<!--
+            	浏览器判断提示。
+            -->
+			<div class="login browser-support" *ngIf="login_state==3">
+				<img src="../../assets/images/browser-support.png" alt="" />
+				<p>为了更好的浏览效果，<br />
+				推荐使用 chrome 浏览器和 Firefox 浏览器！
+				</p>
+				<span>
+					<img src="../../assets/images/chrome.png" />
+					<a target="_blank" href="http://www.google.cn/chrome/browser/">点击下载</a>
+				</span>
+				<span>
+					<img src="../../assets/images/Firefox.png" />
+					<a target="_blank" href="http://www.firefox.com.cn/download/">点击下载</a>
+				</span>
+			</div>
+		</div>
+		
+		<!-- 加载等待 -->
+	<div id="load" style="display:none;">
+  		<p><img src="../../assets/images/001-1-2.png"/></p>
+  	</div>
+</div>

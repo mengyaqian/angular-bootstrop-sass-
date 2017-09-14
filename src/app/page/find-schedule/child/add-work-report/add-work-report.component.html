@@ -1,0 +1,112 @@
+
+<div class="work-content-box">
+<div class="saas-work-content" style="margin-left: 0px; width: 1079px;">
+	<div class="work-content-0">
+		<div class="work-top">
+			<p data-localize="ChineseEnglish.chasdjsh">创建我的工作报告</p>
+		</div>
+			<ul class="work-0-top">
+				<li id="work-day" (click)='stateClick(1)'><p><img [src]="picNum.day"></p><p [ngClass]="{'top-color':workState==1}">日报</p></li>
+				<li id="work-week" (click)='stateClick(2)'><p><img [src]="picNum.week"></p><p [ngClass]="{'top-color':workState==2}">周报</p></li>
+				<li id="work-month" (click)='stateClick(3)'><p><img [src]="picNum.month"></p><p  [ngClass]="{'top-color':workState==3}">月报</p></li>
+				<li [hidden]='workState!=1'>
+					<div>
+						<p style='width: 112px;'><input type="text" name="startdate" id="demo-1-1" value="" onchange="getworkdate()" placeholder="2015-11-16" readonly="readonly"></p>
+						<p class="opendatapicker"><img src="../../../../assets/images/open.png"></p>
+					</div>
+				</li>
+				<li [hidden]='workState!=2'>
+					<div>
+						<p><input onkeyup="this.value=this.value.replace(/\D/g,'')" type="text" name="" id="date-range14" value="" onchange="getworkdate()" placeholder="2016-01-04 - 2016-01-10" dr14="2017-07-31 至 2017-08-06"><img src="../../../../assets/images/open.png"></p>
+					</div>
+				</li>
+				<li [hidden]='workState!=3' >
+					<div>
+						<p><input type="text" name="startdate" id="demo-1-2" onchange="getworkdate()" class="demo-1-2-val" value="" placeholder="2015-07" data-date="2015-07" data-format="yyyy-mm" data-start-view="year" data-min-view="year" readonly="readonly"></p>
+						<p class="opendatapicker"><img src="../../../../assets/images/open.png"></p>
+					</div>
+				</li>
+			</ul>
+			<div class="work-form-box" style="height: 619px;">
+				<p style="clear: both;height: 20px;"></p>
+				<p id="day-sum" data-localize="ChineseEnglish.jrzojiea">
+            <span *ngIf='workState==1'>今日总结</span>
+            <span *ngIf='workState==2'>本周总结</span>
+            <span *ngIf='workState==3'>本月总结</span>
+        </p>
+				<div class="day-sum">
+					<div><textarea maxlength="2000" autoheight="true" name="todaySummary" id="todaySummary" onchange="gettoday()" onkeyup="gettodaySummaryval()" rows="" cols="" data-localize="ChineseEnglish.shurkshd">输入您的工作总结</textarea></div>
+					<div>
+						<div>
+							<p>
+								<span><img src="../../../../assets/images/1 (50).png?1.4.1"></span>
+	  							<input type="file" id="filetoday" sid="" nid="" name="filetoday" class="hide">
+								<label id="fileclicktoday" for="filetoday" data-localize="ChineseEnglish.tijisbfu">添加附件</label>
+							</p>
+							<div id="today_files" class="file-div upload-file-container">
+								<p style="clear: both;" class="div_buttom"></p>
+							</div>
+						</div>
+						<p><b data-localize="ChineseEnglish.yijingsh">已经输入</b><span id="numberid">0</span><b data-localize="ChineseEnglish.gezigege">个字</b></p>
+					</div>
+				</div>
+				<p style="clear: both;height: 20px;"></p>
+				<p id="next-day-sum" data-localize="ChineseEnglish.mingriji">
+            <span *ngIf='workState==1'>明日计划</span>
+            <span *ngIf='workState==2'>下周计划</span>
+            <span *ngIf='workState==3'>下月计划</span>
+        </p>
+				<div class="day-sum">
+					<div><textarea maxlength="2000" autoheight="true" name="nextplan" id="nextplan" onchange="getnextplan()" onkeyup="getnextplanval()" rows="" cols="" data-localize="ChineseEnglish.shjhaksd">输入您的工作计划</textarea></div>
+					<div>
+						<div>
+							<p>
+								<span><img src="../../../../assets/images/1 (50).png?1.4.1"></span>
+								<input type="file" id="filenext" sid="" nid="" name="filenext" value="" class="hide">
+								<label id="fileclicknext" for="filenext" data-localize="ChineseEnglish.tijisbfu">添加附件</label>
+							</p>
+							<div id="next_files" class="file-div upload-file-container">
+								<p style="clear: both;" class="div_buttom"></p>
+							</div>
+						</div>
+						<p><b data-localize="ChineseEnglish.yijingsh">已经输入</b><span id="numberidtwo">0</span><b data-localize="ChineseEnglish.gezigege">个字</b></p>
+					</div>
+				</div>
+				<p style="clear: both;height: 20px;"></p>
+				<div class="add-people">
+					<p data-localize="ChineseEnglish.pyuerfem">批阅人</p>
+					<p class="read-people">
+						<span><img src="../../../../assets/images/dsadhushosia (11).png?1.4.1"></span>
+						<span data-localize="ChineseEnglish.tijpyuer">添加批阅人</span>
+					</p>
+					<ul id="peopleid">
+					
+					</ul>
+					<input type="hidden" onchange="getreviewers()" id="reviewers" name="reviewers" value="">
+				</div>
+				<p style="clear: both;height: 20px;"></p>
+				<div class="add-people">
+					<p data-localize="ChineseEnglish.chaskdsk">抄送给</p>
+					<p class="copy-send">
+						<span><img src="../../../../assets/images/dsadhushosia (11).png?1.4.1"></span>
+						<span data-localize="ChineseEnglish.hkanhsks">添加抄送人</span>
+					</p>
+					<ul id="copysend">
+						
+					</ul>
+					<input type="hidden" id="ccpeoples" name="ccpeople" value="">
+				</div>
+				<p style="clear: both;height: 30px;"></p>
+				<div class="work-confirm">
+					<input type="button" onclick="submitWorkReport(0)" data-localize="ChineseEnglish.baocuncg" value="保存草稿">
+					<input type="button" onclick="submitWorkReport(1)" data-localize="ChineseEnglish.tijsdfks" value="提交">
+					<input type="hidden" id="routine_billid" value="">  <!-- //事务性沟通id -->
+				</div>
+				<p style="clear: both;height: 30px;"></p>
+			</div>
+
+	</div>
+	
+	
+	</div>
+</div>

@@ -1,0 +1,216 @@
+<div class="modal-header">
+	<p class="modal-title">出差申请单</p>
+	<div style="color:#CB1111;font-size:12px">{{formInfo.orderNo}}</div>
+	<div class="all-list-content1">                     
+		<label class="meony-advance"><input type="checkbox" class="inputOrder"  [(ngModel)]="formInfo.ifAdvance"  (change)="advchexk($event)"><b>是否预支</b></label>
+	</div>
+	<button type="button" class="close" aria-label="Close" (click)="closeBill()">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="bill-bus-pubpanl show-width modal-body"  [ngStyle]="{'max-height':windowHeight,'overflow-y':'auto' }">
+	<div class="order"></div>  
+    
+    <div class="all-list-content2 clearfix">
+        <div>申请信息</div>
+        <div class="all-list-select">
+            <p><b>申请人</b><span class="add-list-style-color">＊</span>:</p>
+            <div class="all-list-select-box">
+            	<span style="color:#333">{{formInfo.staticdataList.user.nickname}}</span>
+            </div>
+        </div>
+        <div class="all-list-select">
+            <p><b>申请部门</b><span class='add-list-style-color'>＊</span>:</p>
+            <div class="all-list-select-box newdepartmentbox">
+            	<span style="color:#333;" >{{formInfo.staticdataList.user.department}}</span>        
+            </div>
+        </div>
+         <div class="all-list-select" style="width:56%">
+            <p style="width:21%">同行人：</p>
+             <div class="all-list-select-box" style="width:70%">
+                <div class="toggerUser" (click)="choosePartner()">
+					<input   type="text" class="usernames" name="usernames" [value]="formInfo.toggerPersonName" readOnly> 
+					<input type="hidden" name="ids"  [(ngModel)]="formInfo.toggerPersonId">
+                    <img src="../../assets/images/search_lan.png" class="searchImg">
+                </div>
+            </div>
+        </div>
+        <div class="all-list-select" style="width:40%;margin-left:4%">
+            <p>同行人数:</p>
+             <div class="all-list-select-box">
+                <div>
+                    <input   type="number"  [(ngModel)]="formInfo.toggerPersonNum" class="togger_number" name="togger_number" readOnly>  
+                </div>
+            </div>
+        </div>
+        <div class="all-list-select">
+			<p><b>审批方式</b><span class="add-list-style-color">＊</span>:</p>
+			<select name="apply" [(ngModel)]="formInfo.applystatus"  class="businessSelect">
+				<option [value]="-1">请选择审批方式</option>
+				<option *ngFor="let i of formInfo.applyType" [value]="i.value">{{i.name}}</option>
+			</select>
+        </div>
+        
+        <div class="all-list-select clearfix add-style13 add-class7">
+         <p><b>事由</b><span class="add-list-style-color">＊</span>:</p>             
+			<textarea class="textarea clearfix remark1" contenteditable="true" autoheight="ture" maxlength="200" [(ngModel)]="formInfo.remark"></textarea>
+        </div>  
+    </div>
+    <div class="all-list-content3 add-class-away">
+        <div>入账信息</div>
+        <div class="all-list-select">
+			<p><b>记账部门</b><span class="add-list-style-color">＊</span>:</p>
+			<select class="businessSelect" [(ngModel)]="formInfo.departId">
+				<option *ngFor="let item of formInfo.staticdataList.departList " [value]="item.id">{{item.name}}</option>	
+			</select>
+        </div>
+        <div class="all-list-select version-op">
+			<p class="TallyProjects"><b>记账项目</b>&nbsp;<span class="add-list-style-color jizhang" [hidden]="formInfo.applystatus !=2">＊</span>:</p>
+			<select  class="businessSelect" [(ngModel)]="formInfo.projectId">
+				<option [value]="0">请选择记账部门</option>
+				<option *ngFor="let item of formInfo.staticdataList.projectList" [value]="item.id" >{{item.projectName}}<option>	
+			</select>
+        </div>
+	</div>
+
+    <!--行程-->
+    <div class="request" id="request" style="position:relative">
+		<p class="newz" (click)="addTrip()">新增行程</p>
+		<p style="clear:both"></p>
+		<div class="havetoBox" *ngFor="let items of formInfo.tripList;let i = index">
+			<div class="haveto">
+				<div class="chuln">
+					<div class="luxi">
+							<code class="coc1"></code>
+							<code class="coc2"></code>
+							<div class="travelNum">行程<span>{{i+1}}</span></div>
+							<img *ngIf="formInfo.tripList.length>1" (click)="deleteTrip(i)" src="../../assets/images/guanbi.png" alt="" class="deleteTrip">
+							<ul class="leftUl" style="float:left">
+								<li>出发日期<span>*</span><input type="text" name="startTime" appDateDirective (selected)="dateSelected($event,'start',i)" [(ngModel)]="items.startTime" readonly  placeholder="出发日期"></li>
+								<li style="position:relative">出发城市<span>*</span>
+									<input type="text" name="startCity"   [(ngModel)]="items.startCity" placeholder="出发城市"  (click)="cityStatus(95,137+(217*i),1,i,items.startCity)" (keyup)="cityStatus(95,137+(217*i),1,i,items.startCity)">
+								</li>
+							</ul>
+							<ul class="rightUl" style="float:right">
+								<li>到达日期<span>*</span><input type="text" name="endTime" appDateDirective (selected)="dateSelected($event,'end',i)"  [(ngModel)]="items.endTime" readonly placeholder="到达日期"></li>
+								<li style="position:relative">到达城市<span>*</span>
+									<input type="text" name="toCity" [(ngModel)]="items.toCity"  (click)="cityStatus(460,137+(217*i),2,i,items.toCity)" (keyup)="cityStatus(460,137+(217*i),2,i,items.toCity)" placeholder="到达城市">
+								</li>
+							</ul>
+							<img class="changeTwo" src="../../assets/images/xingcheng.png" alt="">
+							<div class="travelStyle">
+								<span>出行方式</span>
+								<select name="tbType" [(ngModel)]="items.tbType">
+									<option value="0">请选择出行方式</option>
+									<option value="1">火车</option>
+									<option value="2">飞机</option>
+								</select>
+								<label class="hodel">
+									<input type="checkbox" name="" id="" [checked]="items.hotelBooking" (change)="changeHotel($event,i)">
+									<span>是否需要住宿</span>
+								</label>
+							</div>
+					</div>
+					<p class="beiz"><b>备注</b><span class="add-list-style-color">＊</span>：
+					<input type="text" placeholder="请输入备注" name="remark" class="curemark" maxlength="200" [(ngModel)]="items.remark" /> 
+					</p>    
+				</div>
+			</div>
+		</div>	
+		<app-select-city [cityShow]='cityShow'  (selected)="cityChange($event)"></app-select-city>
+    </div>
+     <!--预算-->
+    <div class="all-list-content4-1 resetAddNode">
+        <div>
+			<b>出差申请费用预算</b>
+			<div class="all-list-add-1"  (click)="addCost()"><img src="../../assets/images/004.png" class="option-img"/>新增预算</div>
+        </div>
+        <div class="add-list">
+	        <div class="project-money-currency rate-count clearfix pr" *ngFor="let items of formInfo.costList;let i =index" >
+	            <div class="all-list-select">
+			   <p><b>费用项目</b><span class="add-list-style-color">＊</span>:</p>
+			   <select  class="projectselect" name="" [(ngModel)]="items.costid" (ngModelChange)="costProjectChange($event,i)"> 
+					<option [value]="-1">请选择费用项目</option>
+					<option *ngFor="let item of formInfo.staticdataList.costProjectList" [value]="item.id">{{item.name}}</option>
+				</select>
+	            </div>
+	            <div class="all-list-select add-list-style2 m-l100">
+                   <p><b>金额</b><span class="add-list-style-color">＊</span>:</p>
+					<input   type="number" class="money ty0" t="ty0" placeholder="请输入金额"  name="amount" [(ngModel)]="items.money" (blur)="amountChange(items.money,i)">
+					<select name="" id="" class="moneyselect " [(ngModel)]="items.currency" (ngModelChange)="kindChange($event,i)">
+						<option *ngFor="let item of formInfo.currencyList" [value]="item.id" >{{item.code}}</option>
+					</select>
+	            </div>
+	            <span class="delete" (click)="deleteCost(i)" [hidden]="i==0"></span>
+			</div>
+			
+		</div>
+	</div>
+    <!--预支信息-->
+    <div class="money-div clearfix" *ngIf="formInfo.ifAdvance">
+	    <div class="all-list-content5-1 add-class-away clearfix">
+           <div><b>现金预支</b>
+            <label class="all-yuzhi" style="display:block;float:right;color:#277BCF"><input type="checkbox" [(ngModel)]="formInfo.ifAllAdvance"><b style="float:right;margin-left:4px;line-height:28px">全额预支</b></label>
+			</div>
+			
+	        <div class="all-list-select">
+				<p>支付方式 :</p>
+				<select name="paystyle" class="projectselect" [(ngModel)]="formInfo.advanceObj.advancPayType" >
+					<option *ngFor="let item of formInfo.staticdataList.paymentTypeList" [value]="item.encode" >{{item.name}}</option>
+				</select>
+			</div>
+			
+	        <div class="all-list-select">
+				<p>结算币种</p>
+				<select name="kind"  class="projectselect" [(ngModel)]="formInfo.advanceObj.advanceKind">
+					<option value="0">折合本币结算</option>
+					<option value="1">单据币种结算</option>
+				</select>
+			</div>
+						
+	        <div class="all-list-select">
+                <p>最终收款人<span class='add-list-style-color'>＊</span>:</p>
+				<input type="text" class="receiver-name"  placeholder="请输入最终收款人" [(ngModel)]="formInfo.advanceObj.advanceReave"/>
+			</div>
+	     
+            <div [hidden]="formInfo.advanceObj.advancPayType == 'PT01'" class="all-list-select  bankInfo" style="width:100%;margin-left:0">
+                <p  class="bankNames" style="width:15%"><b>银行卡信息</b><span class='add-list-style-color zhifu-type'>＊</span>:</p>
+                <input style="margin-left:0;width:75%" type="text" class="bankNameNo" [value]="formInfo.advanceObj.bankName+''+formInfo.advanceObj.bankNo"  readOnly>
+                <span class="maintainBank"></span>
+                <input type="hidden" name="bankNo1" class="bankNo1" [(ngModel)]="formInfo.advanceObj.bankNo">
+                <input type="hidden" name="bankName1" class="bankName1" [(ngModel)]="formInfo.advanceObj.bankName">
+            </div>
+		</div>
+
+	    <div class="advanceBox">
+			<table class="report-tb1" border="1">
+				<thead>
+					<tr>
+						<td></td>
+						<td>币种</td>
+						<td>金额</td>
+						<td>汇率</td>
+						<td>折合本币</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="check-detail" *ngFor="let item of formInfo.advanceObj.advanceList;let i=index">
+						<td>{{i+1}}</td>
+						<td>{{item.currencyName}}</td>
+						<td><input type="number" [(ngModel)]="item.money" [readonly]="formInfo.ifAllAdvance"></td>
+						<td>{{item.rate}}</td>
+						<td>{{item.money*item.rate | number:'1.2-2'}}</td>
+					</tr>
+				</tbody>
+			</table>
+	    </div>
+	</div>
+
+    <div class="btnBox">
+        <div class="btn btn-primary ft14" (click)="saveBill(1)">保存并提交</div>
+        <div class="btn btn-bgno ft14" (click)="saveBill(0)">仅保存</div>
+		<div class="btn btn-bgno ft14">取消</div>	
+    </div>
+</div>
+
+

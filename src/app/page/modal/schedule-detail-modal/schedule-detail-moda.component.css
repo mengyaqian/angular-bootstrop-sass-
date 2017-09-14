@@ -1,0 +1,119 @@
+.plan-list {
+    margin: 20px;
+    font-size: 14px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border: 1px solid #d0d0d0;
+    background: var(--color-leftTwoClick);
+    overflow: hidden;
+    position: relative;
+    overflow-y: scroll;
+}
+.plan-list p {
+    margin-bottom: 0;
+}
+.plan-list > ul > li {
+    margin: 20px 0;
+}
+
+.plan-list>ul>li>p:nth-child(1) {
+    margin-right: 10px;
+    line-height: 32px;
+    width: 32px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+.plan-list img {
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+}
+.plan-list>ul>li>p:nth-child(2) {
+    color: #22507A;
+    line-height: 32px;
+}
+.plan-list>ul>li p {
+    float: left;
+}
+.plan-list>ul>li>p:nth-child(3), .plan-list>ul>li>p:nth-child(4), .plan-list>ul>li {
+    color: #333333;
+    line-height: 32px;
+}
+.plan-list>ul>li>p:nth-child(2) {
+    color: #22507A;
+    line-height: 32px;
+}
+.plan-list>ul>li:nth-child(3) > div:nth-child(3) {
+    color: #333333;
+    float: left;
+}
+.plan-list>ul>li:nth-child(3) > div:nth-child(3) p:nth-child(1) {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.plan-list>ul>li:nth-child(3) > div:nth-child(3) p {
+    float: left;
+    line-height: 32px;
+}
+.plan-list>ul>li:nth-child(3) > div:nth-child(3) p:nth-child(2) {
+    margin-right: 20px;
+}
+.plan-list>ul>li:nth-child(3)>div:nth-child(3) b {
+    font-weight: normal;
+    color: #005CB8;
+}
+.plan-list > ul > li > p:nth-child(3) {
+    margin-left: 20px;
+}
+.plan-list>ul>li:nth-child(7) ul {
+    float: left;
+    width: 455px;
+}
+.plan-list>ul>li:nth-child(7) ul li{
+    float: left;
+    position: relative;
+    margin: 0 3px 3px;
+}
+.plan-list>ul>li:nth-child(7) ul li p:nth-child(2) {
+    position: absolute;
+    top: -14px;
+    right: -5px;
+}
+.plan-list>ul>li:nth-child(7) ul li p:nth-child(3) {
+    width: 35px;
+    clear: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+.plan-list>ul>li:nth-child(7) ul li p:nth-child(1) {
+    width: 35px;
+    height: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.plan-list>ul>li:nth-child(7) ul li p:nth-child(1) img {
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+}
+
+.plan-list-input {
+    margin: 10px 0 20px 170px;
+}
+.plan-list-input input {
+    border-radius: 4px;
+    background: #277BCF;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 65px;
+    text-align: center;
+    width: 88px;
+}

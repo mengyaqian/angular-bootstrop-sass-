@@ -1,0 +1,142 @@
+<div class="travelBook-right">
+    <div class="daka">
+        <div class="MyandAll MyandAll-Check">
+            <div [ngClass]="{'mine-CheckIn':showSwitch,'all-CheckIn':!showSwitch}" (click)="showTable(true)">
+                <img *ngIf="showSwitch" src="../../../../../assets/images/bairen.png">
+                <img *ngIf="!showSwitch" src="../../../../../assets/images/qaitong.png">
+                <span>我的签到</span>
+            </div>	
+            <div [ngClass]="{'all-CheckIn':showSwitch,'mine-CheckIn':!showSwitch}" (click)="showTable(false)" style="margin-left:50px">
+                <img *ngIf="showSwitch" src="../../../../../assets/images/qaitong.png">
+                <img *ngIf="!showSwitch" src="../../../../../assets/images/bairen.png">
+                <span>签到统计</span>
+            </div>		
+        </div>
+        
+        <div class="CheckInBlock CheckInBlock-Check">
+            <div class="MyCheckInBlock" *ngIf="showSwitch">
+                <div class="MyChooseList include clearfix">
+                    <div>
+                        <span>年月</span>
+                         <input type="text" appDateDirective [(ngModel)]="searchData.searchtime" [datePickerOptions]='dateTimeOption' (selected)="dateSelected($event)"  readonly="readonly" />
+                        <img src="../../../../../assets/images/open.png">
+                    </div>
+                  
+                    <div>
+                        
+                        <span>班组</span>
+                        <select class="select" name="" id="">
+                            <option value="">班组1</option>
+                            <option value="">班组2</option>
+                            <option value="">班组3</option>
+                        </select>
+                    </div>
+                    
+                    <div id="sumPanel">
+                        <p><b>迟到</b>：<span>{{totalLate}}次</span></p>
+                        <p><b>早退</b>：<span>{{totalEarly}}次</span></p>
+                        <p><b>无记录</b>：<span>{{totalNoRecord}}次</span></p>
+                        <p><b>未签退</b>：<span>{{totalNoexit}}次</span></p>
+                    </div>
+                </div>
+               <app-sign-data (childEvent)="getData($event)" [giveChildSearch]='searchData'></app-sign-data>
+            </div>
+            <!--签到统计-->
+            <div *ngIf="!showSwitch" class="AllCheckInBlock" style="min-width: 910px;">
+                <div class="MyChooseList include clearfix">
+                    <div>
+                        <span>年月</span>
+                        <input type="text" appDateDirective [(ngModel)]="totaldata" [datePickerOptions]='dateTimeOption'  readonly="readonly" />
+                        <img src="../../../../../assets/images/open.png">
+                    </div>
+                     
+                    <div style="margin-right: 16px;">
+                        <span>部门</span>
+                        <select class="select" name="depart"  [(ngModel)]="departId" (ngModelChange)="setInfo($event)">
+                                <option [value]="-1">全部</option>
+                                <option [value]="0">未分组</option>
+                                <option *ngFor="let item of departList" [value]="item.id">{{item.allpath}}</option>                               
+                        </select>
+                    </div> 
+                    <div style="margin-right: 16px;width:200px">
+                            <span>班组</span>
+                            <select class="select" name="" id="">
+                                    <option value="">班组1</option>
+                                    <option value="">班组2</option>
+                            </select>
+                    </div> 
+                   
+                    <div style="width: 160px;">
+                        <span>员工</span>
+                        <input style="width:100px" type="text" [(ngModel)]="emplayName" />
+                    </div>
+                    <div class="btn btn-primary w100" (click)="getSignList()" >查询</div>
+                </div>
+           
+                <div class="FunIconList">
+                        <div (click)="statisSwitch()" class="btn btn-primary ft14"  style="width: 130px;">{{statis.text}}</div>
+                        <div class="btn btn-primary ft14"  (click)="downLoad()" >下载</div>
+                </div>
+                <div class="AllAddDetails" style="padding-top:60px">
+                    <div class="dbody" *ngIf="!statis.showDetial">
+                            <table class="report-tb1" border="1">
+                                    <thead>
+                                        <tr>
+                                            <td>姓名</td>
+                                            <td>部门</td>
+                                            <td>班组签到</td>
+                                            <td>正常出勤</td>
+                                            <td>迟到次数</td>
+                                            <td>早退次数</td>
+                                            <td>未签退</td>
+                                            <td>未打卡</td>
+                                            <td>地点异常</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="check-detail"  *ngFor="let item of totalList">
+                                                <td>{{item.nickName}}</td>
+                                                <td>{{item.department}}</td>
+                                                <td>{{item.siteTitle}}</td>
+                                                <td>{{item.type6}}</td>
+                                                <td>{{item.type2}}</td>
+                                                <td>{{item.type4}}</td>
+                                                <td>{{item.type3}}</td>
+                                                <td>{{item.type5}}</td>
+                                                <td>{{item.type1}}</td>
+                                        </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                        <div style="position: relative;margin-bottom:20px" *ngIf="statis.showDetial">
+                            <div class="newTableDet">
+                                <div clsaa="newLeft" id="newLeft">
+                                    <div class="headLeft"><p>姓名</p><p>部门</p></div>
+                                    <div class="resultLeft">
+                                        <p *ngFor="let item of totalDetialList"><span>{{item.nickname}}</span><span>{{item.department}}</span></p>
+                                    </div>
+                                </div>
+                                <div clsaa="newRight" id="newRight">
+                                    <div class="headRight">
+                                        <p style="width:150px">班组</p>
+                                        <p class="AllStatDel" *ngFor="let item of dayList"><span>{{item.days}}<br>{{item.week}}</span></p>
+                                    </div>
+                                    <div class="resultRight">
+                                        <p *ngFor="let item of totalDetialList">
+                                            <span style="width:150px;line-height:40px;">{{item.title}}</span>
+                                            <span *ngFor="let v of item.data"  class="AllStatDel">{{v[2]}}<br><i [ngStyle]="{'color':v[1] == '6' ?'#666':'red'}">{{v[1] | sign}}</i></span>
+                                        </p>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flright clear">
+                                <ngb-pagination [collectionSize]="totalPage" [(page)]="pageCurrent" [boundaryLinks]="true"  [maxSize]="5" (pageChange)="pageChange($event)"></ngb-pagination>
+                         </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+@charset "utf-8";
+/* CSS Document */
+/*首页*/
+*{margin:0; padding:0;;font-family:microsoft yahei}
+body{background:#F0F4F7;max-width:640px;margin:0 auto}
+.nvi-container{width:100%;background:#F0F4F7;}
+.content1{margin:10px;}
+.Staff-name{font-size:18px;color:#000;text-align:center;padding-top:47px}
+.Staff-name span{color:#0090F0;padding-right:12px}
+.company-name{font-size:20px;color:#0090F0;margin-top:8px;text-align:center;
+border-bottom:1px solid #0090F0;height:60px}
+.phone-num{margin:40px 15px 10px 10px;position:relative;}
+.phone-num input{width:100%;border:1px solid #0090F0;border-radius:3px;height:40px; padding-left:5px;
+font-size:16px;font-family:microsoft yahei;font-weight:300;outline:none;}
+.phone-num span{color:#D0021B;font-size:14px}
+.next-step-butt{margin:30px 10px 10px 10px }
+.next-step-butt input{height:40px;color:#fff;background:#F0F4F7;background: rgba(4,158,222,0.60);
+	border-radius:3px;width:100%;border:0;font-size:16px;font-family:microsoft yahei;outline:none;}
+/*弹框*/
+.translucence{display:none;background:rgba(0,0,0,0.16);position:fixed;top:0;left:0;width:100%;height:100%}
+.Popup-window{background: rgba(255,255,255,0.97);border-radius:12px;margin-left:20px;margin-right:20px;margin-top:180px;}
+.Popup-window p:first-child{padding-top:15px;font-size:16px; text-align:center;line-height:30px;
+	border-bottom:1px solid #f1f1f1;overflow:hidden}
+.Popup-window p:last-child{font-size:17px;color:#0076FF;text-align:center;line-height:50px}
+.none1,.none2,.none3,.none4{display:none}
+.Popup-window p.line-height-p{line-height:35px;padding:10px 0;}
+/*获取验证码*/
+.acquire-ph{margin:40px 10px 10px 10px;overflow:hidden}
+#btn{background:#059EDE;border-radius:3px;border:0;height:42px;color:#fff;font-size:16px;width:96px;
+	font-family:microsoft yahei;float:right}
+#yama{background:rgba(255,255,255,0.86);border:1px solid #0090F0;border-radius:3px;height:40px;
+	padding-left:5px;width:55%;float:left;font-family:microsoft yahei;font-size:16px}
+.acquire-ph span{float:left;font-size: 14px;color: #D0021B;}
+p.te-butt{margin-top:20px;}
+.true-name{text-align:center;font-size:18px}
+p.temgian{margin-top:25px;}
+.open-eye{background:url(../../images/mobile/open.png); background-size:16px 10px;display:block;width:16px;
+	height:10px;position:absolute;right: -5px;top:1px;margin:15px 10px;}
+.close-eye{background:url(../../images/mobile/close.png); background-size:16px 10px;display:block;width:16px;
+	height:10px;position:absolute;right: -5px;top:1px;margin:15px 10px;}
+.succimg{margin:20px 80px;}
+.succimg img{width:100%}
+.tecompname{border:0;height:23px}
+.kanimg img{width:100%}
+.download-app{background:var(--color-conbg);border-radius:40px;margin:15px 55px;display:block;text-align:center;
+	font-size:16px;color:#fff;height:40px;line-height:40px}
+p.testname{padding-top:10px}
+.content1 .logo{display:block;height:25px;width:35%;margin:30px auto 20px}
+.content1 .logo img{width:100%}
+p.tetutu{margin:60px 15px;}
+p.tezhai{margin:0 50px 26px 50px}
+.phone-num input.backyan{background:#F0F4F7;border:1px solid #ccc;color:#999}
+.load{z-index:10;display:none}
+.artlog{position:fixed;width:100%;height:100%;background:#fff;filter:alpha(opacity=50); -moz-opacity:0.5;opacity:0.5;top:0;left:0}
+.artimg{width:60px;height:60px;overflow:hidden;position:fixed;top:50%;left:50%;margin-left:-30px;margin-top:-30px}
+.phone-num2{margin:40px 8px 10px 8px;position:relative;border:1px solid #0090F0;border-radius:3px;height:40px;line-height:40px;background:#fff}
+.phone-num2 input{width:90%;border:none;border-radius:3px;height:30px; padding-left:5px;
+font-size:16px;font-family:microsoft yahei;font-weight:300;outline:none;}
+.phone-num2 span{position:absolute;left:0;top:42px;color:#D0021B;font-size:14px;line-height:20px}
+
+
+
+
+
+
+
+
+
+
+
+
+

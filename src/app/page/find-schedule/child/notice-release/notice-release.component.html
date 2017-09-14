@@ -1,0 +1,37 @@
+<div class="saas-work-content">
+    <div class="work-content-1">
+        <div class="work-top">
+            <p>我发布的公告</p>
+        </div>
+        <ul class="work-ul notice-ul">
+			<li *ngFor="let item of listData" (click)="noticePopup(notice,item.id)">
+				<div>
+					<div>
+						<img src="../../../assets/images/fkb (19).png" />
+					</div> 
+					<div>
+					<p>{{item.title}}</p>
+					<p>{{item.username}}{{item.createDate}}</p>
+					</div>
+				</div>
+				<div>
+					<p>{{item.content}}</p>
+				</div>
+				<span class="this_target">{{item.count}}人未阅读</span>
+			</li>
+        </ul>
+    </div>
+</div>
+<!--详情-->
+<ng-template #notice let-c="close" let-d="dismiss">
+	<div class = "modal-header" > 
+		<h4 class ="modal-title pull-left">{{details.title}}</h4> 
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+  	<div class = "modal-body" > 
+		<span>{{details.createDate}}</span>
+		<p>{{details.content}}</p>
+  	</div>
+</ng-template>

@@ -1,0 +1,12 @@
+	<div class="modal-header modalheader">
+		<h6 class="modal-title">取消日程</h6>
+		<button type="button" class="close" aria-label="Close" (click)="close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<p class="wxhtes"><b data-localize="ChineseEnglish.qhsxcoan">取消该日程的同时</b>，<br>
+	  	<b data-localize="">也会取消所有参与人的对应日程</b></p>
+		<input  type="button" class='btn btn-secondary' (click)='canel()' value="取消当前日程">
+		<input  type="button" class='btn btn-secondary' (click)='canelLast()'  value="取消当前及以后日程">
+	</div>

@@ -1,0 +1,126 @@
+<div>	
+		<header>
+			<div class="saas-top" onclick="">
+				<div class="saas-logo">
+					<p><a href="http://feikongbao.com/"><img src="../../assets/images/u191.png"/></a></p>
+					<p>注册</p>
+				</div>
+			</div>
+		</header>
+		<div class="register-box">
+			<div class="register">
+				<div>
+					<div class="register-top">
+						<p><img [src]="registerImgUrl"/></p>
+						<p>
+							<span>填写手机</span>
+							<span>加入企业</span>
+							<span style="right: 20px;">注册成功</span>
+						</p>
+						<p>
+							<span>1</span>
+							<span>2</span>
+							<span>3</span>
+						</p>
+					</div>
+					<div class="register-1" *ngIf='registerState==1'>
+						<form #registForm="ngForm">
+							<div class="pR">
+								<p>手机号码</p>
+								<p><input maxlength="11" type="tel" [(ngModel)]="stepOne.tel" required  name="tel"   #tel="ngModel"  (keyup)="telCompare()"   placeholder="请输入手机号"/></p>
+								<div class="register-div1">
+									<div class="error" *ngIf="!tel.valid && !tel.pristine && !telStatus">请输入手机号码</div>
+									<div class="error" *ngIf="telStatus==1">请输入正确的手机号码</div>
+									<div class="error" *ngIf="telStatus==2" >该号码已注册，请直接登录</div>
+								</div>
+							</div>
+							<div style="height: 30px; clear: both;"></div>
+							<div class="pR">
+								<p>短信验证码</p>
+								<p><input maxlength="4" type="text" [(ngModel)]="stepOne.code" required   name="code" #code="ngModel"   placeholder="请输入验证码"/></p>
+								<p><input type="button" [disabled]="telStatus !=null || !sendCodeStatus || !tel.valid" [class.nodisabled]="telStatus==null && sendCodeStatus && tel.valid" (click)="getCode(60)"  value="{{codeText}}" /></p>
+								<div class="register-div1">
+									<div class="error" [hidden]="code.valid || code.pristine" >请输入短信验证码</div>
+									<div [hidden]="codeStatus" class="error" >验证码错误</div>
+								</div>
+							</div>
+							<div style="clear: both; height: 30px;"></div>
+							<div class="pR">
+								<p>设置密码</p>
+								<p><input type="password" name="pwd1" [(ngModel)]="stepOne.pwd1" required #pwd1="ngModel" (blur)="pwdCompare('pwd1')" placeholder="请输入密码"/></p>
+								<div class="register-div1">
+									<div class="error" [hidden]="pwd1.valid || pwd1.pristine">密码不能为空</div>
+									<div class="error" [hidden]="pwd1Status">密码应为6-20位！</div>
+								</div>
+							</div>
+							<div style="clear: both; height: 30px;"></div>
+							<div class="pR">
+								<p>确认密码</p>
+								<p><input type="password" name="pwd2" [(ngModel)]="stepOne.pwd2" required #pwd2="ngModel"  placeholder="请再次输入密码" (blur)="pwdCompare('pwd2')"/></p>
+								<div class="register-div1">
+									<div class="error"  [hidden]="pwd2.valid || pwd2.pristine">确认密码不能为空</div>
+									<div [hidden]="pwd2Status" class="error">密码和确认密码不一致</div>
+								</div>
+							</div>
+
+							<input class="register-href1" type="button" [class.nodisabled]="registForm.valid" [disabled]="!registForm.valid" (click)="nextStep()" value="下一步"/>
+							<div style="clear: both; height: 30px;"></div>
+						</form>
+					</div>
+					<div class="register-2" *ngIf='registerState==2'>
+						<div (click)="joinOrg(creatOrg)" >创建企业</div>
+						<div class="injoin" (click)="joinOrg(content)">加入现有企业</div>
+					</div>
+					<div class="register-3" *ngIf='registerState==3'>
+						<p class="imgp"><img src="../../assets/images/dsadas.png"/></p>
+						<p class="tc">
+							<span>恭喜你，您的企业</span>
+							<span>{{stepTwo.enterprisename}}</span>
+						</p>
+						<p class="tc">已经注册成功！</p>
+						<p class="tc">完善资料让小伙伴们能更畅快的玩耍~</p>
+						<p class="tc">
+							<span class="mybtn"><a href="">去完善企业设置</a></span>
+							<span class="mybtn"><a [routerLink]="['/index/home']" >先逛逛看</a></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<!--创建企业-->
+<ng-template #creatOrg let-c="close" let-d="dismiss" >
+	<div class="modal-header">
+		<p class="modal-title">创建企业</p>
+		<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="register-2-2">
+			<form #creatorg="ngForm">
+			<p><input type="text" [(ngModel)]="stepTwo.enterprisename" required  name="enterprisename"   #enterprisename="ngModel" (blur)="regName(1)"  maxlength="25" placeholder="请输入企业名称" /></p>
+			<p><input type="text" [(ngModel)]="stepTwo.truename" required  name="truename"  (blur)="regName(2)" #truename="ngModel"  placeholder="输入您的真实姓名，方便同事找到你"/></p>
+			<p><input type="button" class="btn btn-primary"  [class.nodisabled]="creatorg.valid"  [disabled]="!creatorg.valid"   (click)="stepTwoReg(d)" value="下一步" /></p>
+			<div class="error2" *ngIf="creatOrgStatus ==0">企业名称不能为空</div>
+			<div class="error2" *ngIf="creatOrgStatus==1">真实姓名不能为空</div>
+			<div class="error2" *ngIf="creatOrgStatus==2">姓名必须为2到8个汉字或者2到16个字母</div>
+			</form>
+		</div>
+	</div>
+</ng-template>
+<!--加入企业-->
+	<ng-template #content let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<p class="modal-title">加入企业</p>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<p class="tc">请联系所要加入企业的管理员<br />给您发送邀请链接</p>
+		</div>
+	</ng-template>
+
+
+						

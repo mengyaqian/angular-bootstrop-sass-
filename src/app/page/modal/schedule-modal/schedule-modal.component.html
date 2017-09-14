@@ -1,0 +1,233 @@
+	<div class="modal-header modalheader">
+		<h6 class="modal-title">创建新日程</h6>
+		<button type="button" class="close" aria-label="Close" (click)="close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<ngb-alert type="danger" [hidden]='!alertMessage' (close)="alertMessage=null">{{ alertMessage }}</ngb-alert>
+		<div class="new-schedule-content" style="max-height: 534px;">
+			<div>
+				<p>
+					<img src="../../../assets/images/agenda-title.png">
+				</p>
+				<p>日程标题 :</p>
+				<p>
+					<input maxlength="20" type="text" onchange="getname()" [(ngModel)]='newSchedule.name' name="name" id="name" value="" placeholder="请输入标题">
+				</p>
+			</div>	
+			<div>
+				<ul>
+					<li>
+						<div>
+							<img src="../../../assets/images/agenda-date.png">
+						</div>
+						<div>开始时间 :</div>
+						<div class="timestart">
+							<input type="text" appDateDirective [datePickerOptions]='dateTimeOption' readonly="readonly" [(ngModel)]='newSchedule.startdate'>
+						</div>
+
+
+						<div>
+							<img src="../../../assets/images/agenda-date.png">
+						</div>
+						<div>结束时间 :</div>
+						<div class="timeend">
+							<input type="text" appDateDirective [datePickerOptions]='dateTimeOption' [(ngModel)]='newSchedule.enddate' readonly="readonly" >
+						</div>
+
+					
+					</li>
+					<li>
+						<div></div>
+						<div><label for="allDay">全天</label></div>
+						<div><input id='allDay' [(ngModel)]='newScheduleType.allday' type='checkbox' ></div>
+					</li>
+					<li>
+						<div>
+							<img src="../../../assets/images/agenda-repeat.png">
+						</div>
+						<div>重复 :</div>
+						<div>
+							<p class="repeat">
+								<select [(ngModel)]='newSchedule.repeattype'>
+									<option value=0>不重复</option>
+									<option value=1>每天</option>
+									<option value=2>每周</option>
+									<option value=3>每月</option>
+								</select>
+							</p>
+						</div>
+						<div class="repeat-date" *ngIf='newSchedule.repeattype!=0'>
+							<p>频率 :</p>
+							<p>
+								<input  [(ngModel)]='newSchedule.repeatHz'  maxlength="3" type="text" name="repeatHz" id="repeatHz" value="1">
+							</p>
+							<p>
+								<span *ngIf='newSchedule.repeattype==1'>天</span>
+								<span *ngIf='newSchedule.repeattype==2'>周</span>
+								<span *ngIf='newSchedule.repeattype==3'>月</span>
+							</p>
+						</div>
+						<ul class="repeat-week" readonly="readonly" *ngIf='newSchedule.repeattype==2'>
+							<li *ngFor='let day of newScheduleType.repeatvalueArr'>
+								<input type="checkbox" name='repeatvalue' [(ngModel)]='day.checked' [id]='day.value'/>
+								<label [for]="day.value">{{day.content}}</label>
+							</li>
+						</ul>
+					</li>
+					<li *ngIf='newSchedule.repeattype!=0'>
+						<div></div>
+						<div>结束 :</div>
+						<div>
+							<p class="sch-date">
+								<select [(ngModel)]='newSchedule.endType'>
+									<option value=1>次数</option>
+									<option value=2>日期</option>
+								</select>
+								
+							</p>
+						</div>
+						
+						<div class="sch-date-time" *ngIf='newSchedule.endType==2'>
+							<input readonly appDateDirective [(ngModel)]='newSchedule.endvalue' type="text" >
+						</div>
+						<div class="sch-date-degree"  *ngIf='newSchedule.endType==1'>
+							<p>发生 :</p>
+							<p>
+								<input  maxlength="3"  [(ngModel)]='newSchedule.endsvalue' type="text" >
+							</p>
+							<p>次</p>
+						</div>
+					</li>
+					<li *ngIf='newSchedule.repeattype!=0'>
+						<div></div>
+						<div>结果 :</div>
+						<div id="repeatResult">
+							每 {{newSchedule.repeatHz}} 
+							<span *ngIf='newSchedule.repeattype==1'>天</span>
+							<span *ngIf='newSchedule.repeattype==2'>周</span>
+							<span *ngIf='newSchedule.repeattype==3'>月</span>
+							<span>
+								,
+								<span *ngFor='let item of newScheduleType.repeatvalueArr;let i=index' [hidden]='!item.checked'>
+									{{item.content}}
+									<span>、</span>
+								</span>
+								
+							</span>
+							，<span *ngIf='newSchedule.endType==1'>共 {{newSchedule.endsvalue}} 次</span>
+							<span *ngIf='newSchedule.endType==2'>截止到 {{newSchedule.endvalue}}</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+								<div>
+									<ul>
+										<li>
+											<div>
+												<img src="../../../assets/images/agenda-people.png">
+											</div>
+											<div>参与人员 :</div>
+											<div class="add-man-click pointer">
+												<p>
+													<img src="../../../assets/images/dsadhushosia (11).png">
+												</p>
+												<p (click)="personShow('joinUsers')">添加人员</p>
+											</div>
+											<ul class="add-man" [hidden]='newScheduleType.joinUsers.length==0'>
+												<li *ngFor='let user of newScheduleType.joinUsers'>
+													<p>
+														<img [src]="user.avatarSmall">
+													</p>
+													<p><img src="../../../assets/images/delete.png"></p>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<div>
+												<img src="../../../assets/images/agenda-place.png">
+											</div>
+											<div>地<span class="date-decration">点</span> :</div>
+											<div>
+												<textarea maxlength="50" type="text" [(ngModel)]='newSchedule.address' placeholder="请输入地点" style='margin-left: 32px;'></textarea>
+											</div>
+										</li>
+										<li>
+											<div>
+												<img src="../../../assets/images/agenda-derails.png">
+											</div>
+											<div>日程详情 :</div>
+											<div>
+												<textarea maxlength="200" [(ngModel)]='newSchedule.content' autoheight="true"  rows="" cols="" placeholder="日程详情描述" style="height: 0px;"></textarea>
+											</div>
+										</li>
+										<li>
+											<div>
+												<img src="../../../assets/images/agenda-enclosure.png">
+											</div>
+											<div>附件 :</div>
+											<div class="upload-file-container">
+													<p id="fileclicksch" style="color:#0066cc;">
+														<label class='pointer' for='filesch'>
+															<img src="../../../assets/images/dsadhushosia (11).png">添加附件
+														</label>
+														<input type="file" id="filesch" (change)='fileChange($event)' [(ngModel)]='newSchedule.files' multiple  class="hide"/>
+													</p>
+													<p></p>
+													<span class="span-accessory" [hidden]='newScheduleType.fileArr.length==0' *ngFor='let item of newScheduleType.fileArr'>
+														<b><img src="../../../assets/images/acc (7).png"></b>
+														<b>{{item.name}}<span>({{item.size}})</span></b>
+														<b><img src="../../../assets/images/213 (2).png" class="remove" (click)='removeFile(item)'></b>
+													</span>
+											</div>
+										</li>
+
+										<li>
+											<div>
+												<img src="../../../assets/images/agenda-range.png">
+											</div>
+											<div>公开范围 :</div>
+											<div class="overt-click">
+												<select [(ngModel)]='newSchedule.open' (change)='openChange()'>
+													<option value=0>仅自己</option>
+													<option value=1>指定人可见</option>
+													<option value=2>所有同事可见</option>
+												</select>
+											</div> <input id="zduserIds" value="" type="hidden">
+											<ul class="overt" [hidden]='newScheduleType.seeUsers.length==0'>
+												<li *ngFor='let user of newScheduleType.seeUsers'>
+													<p><img [src]="user.avatarSmall"></p>
+													<p><img src="../../../assets/images/delete.png"></p>
+												</li>
+												
+											</ul>
+										</li>
+										<li>
+											<div>
+												<img src="../../../assets/images/agenda-remind.png">
+											</div>
+											<div>提醒时间 :</div>
+											<div>
+												<select [(ngModel)]='newSchedule.warn'>
+													<option value=0>不提醒</option>
+													<option value=1>5分钟前</option>
+													<option value=2>10分钟前</option>
+													<option value=3>半小时前</option>
+													<option value=4>1小时前</option>
+													<option value=5>2小时前</option>
+													<option value=6>1天前</option>
+												</select>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="new-schedule-button">
+									<p>
+										<input type="submit" (click)='createSchedule()' value="创建">
+									</p>
+								</div>
+
+
+		</div>					
+	</div>
